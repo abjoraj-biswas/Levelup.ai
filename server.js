@@ -33,13 +33,18 @@ async function initInsforge() {
         console.error("Failed to initialize InsForge:", err);
     }
 }
-initInsforge();
-
+let initPromise = initInsforge();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Ensure InsForge is initialized before handling any API requests
+app.use('/api', async (req, res, next) => {
+    await initPromise;
+    next();
+});
 
 app.get('/api/insforge-status', async (req, res) => {
     if (!insforge) {

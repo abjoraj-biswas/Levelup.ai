@@ -1,0 +1,517 @@
+:root {
+    --bg-main: #0B0E14; /* Deep dark blue-black */
+    --bg-card: #151821; /* Slightly lighter card background */
+    --bg-input: #10121A;
+    --border-color: #262B3D;
+    --primary-color: #7B61FF; /* Vibrant Purple */
+    --primary-hover: #694AE8;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --success-color: #10B981;
+    --danger-color: #EF4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* Layout */
+.onboarding-container {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    min-height: 100vh;
+    padding: 40px;
+    gap: 60px;
+}
+
+/* Left Panel */
+.left-panel {
+    flex: 0 0 380px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: white;
+}
+
+.logo-area img, .logo-area svg {
+    width: 32px;
+    height: 32px;
+}
+
+.left-content {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.left-content.active {
+    display: block;
+}
+
+.left-content h1 {
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.left-content p.desc {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.feature-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(123, 97, 255, 0.1);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.login-link {
+    margin-top: auto;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.graphic-placeholder {
+    width: 100%;
+    height: 300px;
+    background: radial-gradient(circle, rgba(123,97,255,0.15) 0%, rgba(11,14,20,0) 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.graphic-placeholder i {
+    font-size: 120px;
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 20px rgba(123,97,255,0.4));
+}
+
+/* Right Panel */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stepper */
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 16px;
+}
+
+.step-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.step-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.step-indicator.active {
+    color: white;
+}
+
+.step-indicator.active .step-num {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.step-line {
+    width: 60px;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+/* Form Container */
+.form-card {
+    background-color: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Step Form Views */
+.form-step {
+    display: none;
+    animation: slideUpFade 0.4s ease forwards;
+}
+
+.form-step.active {
+    display: block;
+}
+
+/* Grid Layouts inside forms */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(123, 97, 255, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #475569;
+}
+
+/* Password wrapper */
+.password-wrapper {
+    position: relative;
+}
+.password-wrapper input {
+    padding-right: 40px;
+}
+.password-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+/* Password Strength */
+.password-strength {
+    display: flex;
+    gap: 4px;
+    margin-top: 12px;
+}
+.strength-segment {
+    flex: 1;
+    height: 4px;
+    background-color: var(--border-color);
+    border-radius: 2px;
+}
+.strength-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+/* Phone Input Special */
+.phone-input-group {
+    display: flex;
+}
+.phone-input-group select {
+    width: 80px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+.phone-input-group input {
+    flex: 1;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-input);
+    cursor: pointer;
+    position: relative;
+}
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    left: 3px;
+    top: 0px;
+}
+.checkbox-group label {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+.checkbox-group label a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Verification Step Specifics */
+.verification-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.verification-header i {
+    color: var(--primary-color);
+}
+
+.verification-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.otp-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.otp-container input {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+.otp-container input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.resend-text {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+.resend-text button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-verified {
+    width: 100%;
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Personal Details Split */
+.section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.upload-btn {
+    background-color: transparent;
+    border: 1px dashed var(--border-color);
+    color: var(--text-secondary);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    font-size: 13px;
+}
+.upload-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .onboarding-container {
+        flex-direction: column;
+        padding: 24px;
+    }
+    .left-panel {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+    .logo-area {
+        justify-content: center;
+        margin-bottom: 24px;
+    }
+    .feature-list {
+        display: none;
+    }
+    .graphic-placeholder {
+        display: none;
+    }
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}

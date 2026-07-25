@@ -1,0 +1,107 @@
+--- server.js	2026-07-24 20:39:07.000000000 +0000
++++ server.js	2026-07-24 22:36:00.000000000 +0000
+@@ -338,40 +338,71 @@
+     }
+     
+-    // Simulate AI verification delay
+-    setTimeout(async () => {
+-        // Mark as completed
+-        await insforge.database.from('user_bounties').upsert({
+-            user_id: req.user.id,
+-            bounty_id: bounty.id,
+-            status: 'Completed',
+-            submitted_url: url
+-        });
+-        
+-        // Update profile points
+-        const pointsMatch = bounty.reward_amount.match(/\d+/);
+-        const rewardPoints = pointsMatch ? parseInt(pointsMatch[0], 10) : 0;
+-        
+-        // Get current profile
+-        const { data: profile } = await insforge.database
+-            .from('profiles')
+-            .select('bounty_points')
+-            .eq('id', req.user.id)
+-            .single();
+-            
+-        const newPoints = (profile?.bounty_points || 0) + rewardPoints;
+-        
+-        await insforge.database
+-            .from('profiles')
+-            .upsert({ id: req.user.id, bounty_points: newPoints }); // Upsert in case profile doesn't exist
+-            
+-        res.json({ 
+-            success: true, 
+-            message: 'Bounty verified and completed!', 
+-            bounty, 
+-            newPoints 
+-        });
+-    }, 1500);
++    try {
++        let repoInfo = "No repository details available.";
++        if (url.includes('github.com/')) {
++            const match = url.match(/github\.com\/([^\/]+\/[^\/]+)/);
++            if (match && match[1]) {
++                const repoName = match[1].replace('.git', '');
++                try {
++                    const ghRes = await fetch(`https://api.github.com/repos/${repoName}`);
++                    if (ghRes.ok) {
++                        const ghData = await ghRes.json();
++                        repoInfo = `Repo Name: ${ghData.full_name}\nDescription: ${ghData.description}\nLanguage: ${ghData.language}`;
++                    }
++                } catch (e) {
++                    console.error("Github fetch error:", e);
++                }
++            }
++        }
++
++        const prompt = `You are an expert AI code reviewer. A user has submitted a GitHub repository for a bounty.
++Bounty Title: ${bounty.title}
++Bounty Description: ${bounty.description}
++Submitted URL: ${url}
++Repository Info:
++${repoInfo}
++
++Does this repository look like a valid attempt at solving the bounty?
++Respond with exactly one word: VALID or INVALID.`;
++
++        const ollamaRes = await fetch('http://localhost:11434/api/generate', {
++            method: 'POST',
++            headers: { 'Content-Type': 'application/json' },
++            body: JSON.stringify({
++                model: 'gemma4:e2b',
++                prompt: prompt,
++                stream: false
++            })
++        });
++
++        if (!ollamaRes.ok) throw new Error("Ollama API failed");
++        
++        const data = await ollamaRes.json();
++        const aiResponse = (data.response || "").trim().toUpperCase();
++
++        if (aiResponse.includes("VALID") && !aiResponse.includes("INVALID")) {
++            await insforge.database.from('user_bounties').upsert({
++                user_id: req.user.id,
++                bounty_id: bounty.id,
++                status: 'Completed',
++                submitted_url: url
++            });
++            
++            const pointsMatch = bounty.reward_amount.match(/\d+/);
++            const rewardPoints = pointsMatch ? parseInt(pointsMatch[0], 10) : 0;
++            
++            const { data: profile } = await insforge.database.from('profiles').select('bounty_points').eq('id', req.user.id).single();
++            const newPoints = (profile?.bounty_points || 0) + rewardPoints;
++            
++            await insforge.database.from('profiles').upsert({ id: req.user.id, bounty_points: newPoints });
++                
++            return res.json({ success: true, message: 'Bounty verified and completed!', bounty, newPoints });
++        } else {
++            return res.status(400).json({ error: 'AI Verification Failed: The submitted repository does not appear valid for this bounty.' });
++        }
++    } catch (err) {
++        console.error("Bounty Verification Error:", err);
++        return res.status(500).json({ error: 'Failed to communicate with AI for verification.' });
++    }
+ });

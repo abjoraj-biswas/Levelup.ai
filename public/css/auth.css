@@ -1,0 +1,224 @@
+:root {
+    --bg-dark: #121212;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1AA;
+    --input-bg: #1A1A1A;
+    --input-border: #333333;
+    --btn-primary: #74E2B1; /* Mint green */
+    --btn-primary-hover: #5FCB9C;
+    --btn-social: #FFFFFF;
+    --text-dark: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+}
+
+.auth-container {
+    width: 100%;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 380px; /* Matched the narrow layout in the screenshot */
+}
+
+.logo-container {
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+/* Social Buttons */
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.btn-social {
+    background-color: var(--btn-social);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+}
+
+.btn-social:hover {
+    background-color: #F4F4F5;
+}
+
+.btn-social i {
+    font-size: 18px;
+}
+
+.google-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 32px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--input-border);
+}
+
+.divider span {
+    padding: 0 16px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: var(--text-primary);
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+.form-group input::placeholder {
+    color: #52525B;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #555555;
+}
+
+/* Password Input */
+.password-input-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #52525B;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.toggle-password:hover {
+    color: var(--text-secondary);
+}
+
+/* Primary Button */
+.btn-submit {
+    width: 100%;
+    background-color: var(--btn-primary);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 32px;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: var(--btn-primary-hover);
+}
+
+/* Switch Auth & Terms */
+.switch-auth {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+}
+
+.switch-auth a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.switch-auth a:hover {
+    text-decoration: underline;
+}
+
+.terms {
+    text-align: center;
+    font-size: 12px;
+    color: #52525B;
+    line-height: 1.6;
+}
+
+.terms a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid #52525B;
+}
+
+.terms a:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+}

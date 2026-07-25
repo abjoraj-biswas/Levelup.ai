@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LevelUp.AI - Onboarding</title>
+    <link rel="stylesheet" href="css/onboarding.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Phosphor Icons for crisp outlines -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="onboarding-container">
+        
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="logo-area">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 24L24 14L34 24L24 34L14 24Z" fill="#7B61FF"/>
+                    <path d="M24 14L34 24V14H24Z" fill="#A78BFA"/>
+                    <path d="M14 24L24 34V24H14Z" fill="#A78BFA"/>
+                </svg>
+                LevelUp.AI
+            </div>
+
+            <!-- Left Content for Step 1 -->
+            <div class="left-content active" id="left-step1">
+                <h1>Create your<br>LevelUp.AI account</h1>
+                <p class="desc">Start your AI-powered journey from college to your dream career.</p>
+                <ul class="feature-list">
+                    <li>
+                        <div class="feature-icon"><i class="ph-bold ph-map-trifold"></i></div>
+                        Personalized Roadmaps
+                    </li>
+                    <li>
+                        <div class="feature-icon"><i class="ph-bold ph-brain"></i></div>
+                        AI Skill Analysis
+                    </li>
+                    <li>
+                        <div class="feature-icon"><i class="ph-bold ph-briefcase"></i></div>
+                        Internships & Placements
+                    </li>
+                    <li>
+                        <div class="feature-icon"><i class="ph-bold ph-chart-line-up"></i></div>
+                        Real-time Progress Tracking
+                    </li>
+                </ul>
+                <div class="login-link">
+                    Already have an account? <a href="auth.html">Sign in</a>
+                </div>
+            </div>
+
+            <!-- Left Content for Step 2 -->
+            <div class="left-content" id="left-step2">
+                <h1>Verify your<br>account</h1>
+                <p class="desc">We sent OTPs to your Gmail and Phone number. Please verify both to continue.</p>
+                <div class="graphic-placeholder">
+                    <i class="ph-fill ph-shield-check"></i>
+                </div>
+            </div>
+
+            <!-- Left Content for Step 3 -->
+            <div class="left-content" id="left-step3">
+                <h1>Tell us about<br>yourself</h1>
+                <p class="desc">Help us personalize your experience for better recommendations.</p>
+                <div class="graphic-placeholder">
+                    <i class="ph-fill ph-user-list"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            
+            <!-- Stepper -->
+            <div class="stepper">
+                <div class="step-indicator active" id="indicator1">
+                    <div class="step-num">1</div>
+                    Sign Up
+                </div>
+                <div class="step-line"></div>
+                <div class="step-indicator" id="indicator2">
+                    <div class="step-num">2</div>
+                    Verify
+                </div>
+                <div class="step-line"></div>
+                <div class="step-indicator" id="indicator3">
+                    <div class="step-num">3</div>
+                    Personal Details
+                </div>
+            </div>
+
+            <!-- Forms Container -->
+            <div class="form-card">
+                
+                <!-- Step 1 Form -->
+                <div class="form-step active" id="step1">
+                    <form id="signupForm">
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" placeholder="e.g. Ujjwal_2004" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Gmail Address</label>
+                                <input type="email" id="email" placeholder="e.g. ujjwaldev@gmail.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <div class="phone-input-group">
+                                    <select id="countryCode">
+                                        <option value="+91">🇮🇳 +91</option>
+                                        <option value="+1">🇺🇸 +1</option>
+                                        <option value="+44">🇬🇧 +44</option>
+                                    </select>
+                                    <input type="tel" id="phone" placeholder="98765 43210" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <div class="password-wrapper">
+                                    <input type="password" id="password" placeholder="••••••••" required>
+                                    <button type="button" class="password-toggle" data-target="password">
+                                        <i class="ph ph-eye-slash"></i>
+                                    </button>
+                                </div>
+                                <div class="password-strength">
+                                    <div class="strength-segment" id="seg1"></div>
+                                    <div class="strength-segment" id="seg2"></div>
+                                    <div class="strength-segment" id="seg3"></div>
+                                    <div class="strength-segment" id="seg4"></div>
+                                </div>
+                                <div class="strength-text" id="strengthText"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 32px;">
+                            <label>Confirm Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                                <button type="button" class="password-toggle" data-target="confirmPassword">
+                                    <i class="ph ph-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            Continue <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Step 2 Form (Verification) -->
+                <div class="form-step" id="step2">
+                    <div class="form-grid-2" style="margin-bottom: 32px;">
+                        <!-- Email Block -->
+                        <div>
+                            <div class="verification-header">
+                                <i class="ph-fill ph-envelope-simple"></i> Verify Gmail
+                            </div>
+                            <div class="verification-desc">
+                                OTP sent to<br><span id="displayEmail" style="color:white; font-weight:500;"></span>
+                            </div>
+                            
+                            <div class="otp-container email-otp-inputs">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                            </div>
+
+                            <div id="emailTimerArea" class="resend-text">
+                                Resend OTP in <span id="emailTimer" style="color:white;">00:30</span>
+                            </div>
+                            <div id="emailVerifiedBtn" class="btn-verified" style="display:none;">
+                                <i class="ph-fill ph-check-circle"></i> Gmail Verified
+                            </div>
+                        </div>
+
+                        <!-- Phone Block -->
+                        <div>
+                            <div class="verification-header">
+                                <i class="ph-fill ph-phone"></i> Verify Phone Number
+                            </div>
+                            <div class="verification-desc">
+                                OTP sent to<br><span id="displayPhone" style="color:white; font-weight:500;"></span>
+                            </div>
+                            
+                            <div class="otp-container phone-otp-inputs">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                            </div>
+
+                            <div id="phoneTimerArea" class="resend-text">
+                                Resend OTP in <span id="phoneTimer" style="color:white;">00:30</span>
+                            </div>
+                            <div id="phoneVerifiedBtn" class="btn-verified" style="display:none;">
+                                <i class="ph-fill ph-check-circle"></i> Phone Verified
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" id="btnGetStarted" class="btn-primary" disabled>
+                        Get Started <i class="ph-bold ph-arrow-right"></i>
+                    </button>
+                    <p style="text-align:center; font-size:12px; color:var(--text-secondary); margin-top:16px;">
+                        You will be able to proceed once both verifications are complete.
+                    </p>
+                </div>
+
+                <!-- Step 3 Form (Personal Details) -->
+                <div class="form-step" id="step3">
+                    <form id="detailsForm">
+                        <div class="form-grid-2">
+                            <!-- Left Col -->
+                            <div>
+                                <div class="section-title">Personal Information</div>
+                                
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" value="Ujjwal Dev" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select required>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" style="display:flex; flex-direction:row; align-items:center; justify-content:space-between;">
+                                    <label style="margin:0;">Profile Photo <span style="color:#475569;">(Optional)</span></label>
+                                    <div style="display:flex; gap:12px; align-items:center;">
+                                        <div style="width:40px; height:40px; border-radius:50%; background:#10121A; border:1px solid #1E2433; display:flex; align-items:center; justify-content:center;">
+                                            <i class="ph-fill ph-user" style="color:#475569;"></i>
+                                        </div>
+                                        <button type="button" class="upload-btn">Upload Photo</button>
+                                    </div>
+                                </div>
+
+                                <div class="section-title" style="margin-top: 40px;">Career Information</div>
+                                
+                                <div class="form-group">
+                                    <label>Preferred Domain</label>
+                                    <select required>
+                                        <option value="Web Development">Web Development</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="AI/ML">AI / Machine Learning</option>
+                                        <option value="Cybersecurity">Cybersecurity</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Career Goal</label>
+                                    <input type="text" value="Full Stack Developer" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Interested Skills</label>
+                                    <input type="text" value="React, Node.js, MongoDB, DSA" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Dream Company <span style="color:#475569;">(Optional)</span></label>
+                                    <input type="text" value="Google">
+                                </div>
+                            </div>
+
+                            <!-- Right Col -->
+                            <div>
+                                <div class="section-title">Academic Information</div>
+
+                                <div class="form-group">
+                                    <label>College Name</label>
+                                    <input type="text" value="KIET Group of Institutions" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Degree</label>
+                                    <input type="text" value="B.Tech" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Branch</label>
+                                    <input type="text" value="Computer Science" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Year</label>
+                                    <select required>
+                                        <option value="1">1st Year</option>
+                                        <option value="2" selected>2nd Year</option>
+                                        <option value="3">3rd Year</option>
+                                        <option value="4">4th Year</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Semester</label>
+                                    <select required>
+                                        <option value="4" selected>4th Semester</option>
+                                    </select>
+                                </div>
+
+                                <div class="section-title" style="margin-top: 40px;">Social Profiles <span style="color:#475569; font-weight:normal;">(Optional)</span></div>
+
+                                <div class="form-group">
+                                    <label>LinkedIn Profile</label>
+                                    <input type="text" value="linkedin.com/in/ujjwaldev">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Github Profile</label>
+                                    <input type="text" value="github.com/ujjwaldev">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Portfolio Website</label>
+                                    <input type="text" value="ujjwaldev.vercel.app">
+                                </div>
+
+                                <div class="form-group" style="display:flex; flex-direction:row; align-items:center; justify-content:space-between;">
+                                    <label style="margin:0;">Resume (PDF)</label>
+                                    <button type="button" class="upload-btn">Upload Resume</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary" id="btnSaveDetails" style="margin-top: 24px;">
+                            Save & Continue <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="js/onboarding.js"></script>
+</body>
+</html>

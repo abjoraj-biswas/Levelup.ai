@@ -116,7 +116,8 @@
                     const data = await res.json();
                     
                     if (!res.ok) {
-                        alert("Login failed: " + (data.error || "Unknown error"));
+                        const details = data.details ? "\\nDetails: " + data.details : "";
+                        alert("Login failed: " + (data.error || "Unknown error") + details);
                         btn.innerHTML = origText;
                         btn.disabled = false;
                         return;

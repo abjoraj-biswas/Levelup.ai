@@ -14,6 +14,8 @@ const PORT = process.env.PORT || 5500;
 
 // Initialize InsForge Client dynamically (to support ESM exports in CJS)
 let insforge;
+let initError = null;
+
 async function initInsforge() {
     try {
         const { createClient } = await import('@insforge/sdk');
@@ -27,9 +29,11 @@ async function initInsforge() {
             });
             console.log("✅ InsForge SDK Client Initialized");
         } else {
-            console.warn("⚠️ InsForge credentials not found in .env.local");
+            initError = "InsForge credentials not found in environment. URL: " + (insforgeUrl ? 'Found' : 'Missing') + ", Key: " + (insforgeAnonKey ? 'Found' : 'Missing');
+            console.warn("⚠️ " + initError);
         }
     } catch (err) {
+        initError = err.toString() + (err.stack ? "\n" + err.stack : "");
         console.error("Failed to initialize InsForge:", err);
     }
 }
@@ -48,7 +52,7 @@ app.use('/api', async (req, res, next) => {
 
 app.get('/api/insforge-status', async (req, res) => {
     if (!insforge) {
-        return res.status(500).json({ error: "InsForge client not initialized" });
+        return res.status(500).json({ error: "InsForge client not initialized", details: initError });
     }
     // Simple test query to check if the connection is alive
     const { data, error } = await insforge.database.from('profiles').select('*').limit(1);
@@ -87,7 +91,7 @@ app.post('/api/auth/verify-signup', async (req, res) => {
 
 app.post('/api/auth/login-step1', async (req, res) => {
     const { email, password } = req.body;
-    if (!insforge) return res.status(500).json({ error: "InsForge not configured" });
+    if (!insforge) return res.status(500).json({ error: "InsForge not configured", details: initError });
     
     const { data, error } = await insforge.auth.signInWithPassword({ email, password });
     if (error) return res.status(400).json({ error: error.message });

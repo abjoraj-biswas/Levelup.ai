@@ -27,7 +27,7 @@
                 <button class="btn-social">
                     <i class="fab fa-github"></i> Continue with GitHub
                 </button>
-                <button class="btn-social">
+                <button class="btn-social" type="button" onclick="window.location.href='/api/auth/google'">
                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="google-icon">
                     Continue with Google
                 </button>
@@ -179,6 +179,20 @@
                 alert("Network error.");
                 btn.innerHTML = origText;
                 btn.disabled = false;
+            }
+        });
+
+        // Intercept OAuth Redirect Hash
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash && hash.includes('access_token=')) {
+                const params = new URLSearchParams(hash.substring(1));
+                const token = params.get('access_token');
+                if (token) {
+                    localStorage.setItem('supabase_token', token);
+                    window.location.hash = '';
+                    window.location.href = '/index.html';
+                }
             }
         });
     </script>

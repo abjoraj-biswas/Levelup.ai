@@ -86,6 +86,28 @@ app.post('/api/auth/verify-signup', async (req, res) => {
     res.json({ message: "Verification successful", data });
 });
 
+app.get('/api/auth/google', async (req, res) => {
+    if (!supabase) return res.status(500).json({ error: "Supabase not configured", details: initError });
+    
+    const baseUrl = req.protocol + '://' + req.get('host');
+    const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+            redirectTo: baseUrl + '/auth.html'
+        }
+    });
+    
+    if (error) {
+        return res.status(500).json({ error: error.message });
+    }
+    
+    if (data?.url) {
+        res.redirect(data.url);
+    } else {
+        res.status(500).json({ error: "Could not generate OAuth URL" });
+    }
+});
+
 app.post('/api/auth/login-step1', async (req, res) => {
     const { email, password } = req.body;
     if (!supabase) return res.status(500).json({ error: "Supabase not configured", details: initError });

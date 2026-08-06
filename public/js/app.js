@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Login Logic ---
+    const loginForm = document.getElementById('loginForm');
+    const appLogin = document.getElementById('app-login');
+    const appDashboard = document.getElementById('app-dashboard');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            appLogin.style.display = 'none';
+            appDashboard.style.display = 'block';
+        });
+    }
+
     
     const navItems = document.querySelectorAll('.nav-item');
     const views = document.querySelectorAll('.view');

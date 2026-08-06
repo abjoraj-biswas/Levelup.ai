@@ -1,0 +1,173 @@
+◇ injected env (2) from .env.local // tip: ◈ encrypted .env [www.dotenvx.com]
+Server is running on http://localhost:5500
+✅ InsForge SDK Client Initialized
+
+==========================================
+🔒 Simulated 2FA Email to abjoraj203@gmail.com
+   Your verification code is: 300606
+==========================================
+
+
+==========================================
+🔒 Simulated 2FA Email to abjoraj203@gmail.com
+   Your verification code is: 668563
+==========================================
+
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+
+==========================================
+🔒 Simulated 2FA Email to abjoraj203@gmail.com
+   Your verification code is: 860808
+==========================================
+
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Auth Error: [TypeError: fetch failed] {
+  [cause]: ConnectTimeoutError: Connect Timeout Error (attempted addresses: 64:ff9b::12d9:d6af:443, timeout: 10000ms)
+      at onConnectTimeout (node:internal/deps/undici/undici:2402:23)
+      at Immediate._onImmediate (node:internal/deps/undici/undici:2383:11)
+      at process.processImmediate (node:internal/timers:534:21) {
+    code: 'UND_ERR_CONNECT_TIMEOUT'
+  }
+}
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+
+==========================================
+🔒 Simulated 2FA Email to abjoraj203@gmail.com
+   Your verification code is: 213922
+==========================================
+
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+
+==========================================
+🔒 Simulated 2FA Email to abjoraj203@gmail.com
+   Your verification code is: 953755
+==========================================
+

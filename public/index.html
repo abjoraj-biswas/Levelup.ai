@@ -159,26 +159,59 @@
                     <div class="page-title">
                         <h2 id="current-page-title">Student dashboard</h2>
                     </div>
-                    <div class="user-dropdown-container">
-                        <div class="user-profile" id="user-profile-btn">
-                            <div class="avatar">
-                                <img src="https://ui-avatars.com/api/?name=Aarya&background=random&color=fff"
-                                    alt="Avatar" id="nav-avatar-img">
+                    <div style="display: flex; align-items: center; gap: 24px;">
+                        <div class="notification-container" style="position: relative; cursor: pointer;">
+                            <i class="ph ph-bell" id="notification-btn"
+                                style="font-size: 24px; color: var(--text-secondary);"></i>
+                            <span class="notification-badge"
+                                style="position: absolute; top: -4px; right: -4px; background: #EF4444; color: white; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 10px;">2</span>
+                            <div class="notification-dropdown" id="notification-dropdown"
+                                style="display: none; position: absolute; top: 40px; right: -10px; background: var(--surface, #fff); border: 1px solid var(--border, #E2E8F0); border-radius: 12px; width: 300px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 100;">
+                                <div style="padding: 16px; border-bottom: 1px solid var(--border, #E2E8F0);">
+                                    <h4 style="margin: 0; font-size: 16px; color: var(--text-primary, #0F172A);">
+                                        Notifications</h4>
+                                </div>
+                                <div style="max-height: 300px; overflow-y: auto;">
+                                    <div
+                                        style="padding: 12px 16px; border-bottom: 1px solid var(--border, #E2E8F0); display: flex; flex-direction: column; gap: 4px; background: rgba(59, 130, 246, 0.05);">
+                                        <span
+                                            style="font-size: 14px; font-weight: 600; color: var(--text-primary, #0F172A);">Mock
+                                            Interview Available</span>
+                                        <span style="font-size: 12px; color: var(--text-secondary, #475569);">Your AI
+                                            mock interview session is ready to start.</span>
+                                    </div>
+                                    <div style="padding: 12px 16px; display: flex; flex-direction: column; gap: 4px;">
+                                        <span
+                                            style="font-size: 14px; font-weight: 600; color: var(--text-primary, #0F172A);">Bug
+                                            Hunting Event</span>
+                                        <span style="font-size: 12px; color: var(--text-secondary, #475569);">A new bug
+                                            hunting bounty has been posted.</span>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="username" id="nav-username">Aarya</span>
-                            <i class="ph ph-caret-down"></i>
                         </div>
-                        <div class="user-dropdown-menu" id="user-dropdown-menu">
-                            <a href="#" class="dropdown-item" data-target="myprofile"><i class="ph ph-user"></i> My
-                                Profile</a>
-                            <a href="#" class="dropdown-item"><i class="ph ph-gear"></i> Settings</a>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-item theme-toggle" id="theme-toggle">
-                                <i class="ph ph-moon"></i> <span>Toggle Dark Mode</span>
+                        <div class="user-dropdown-container">
+                            <div class="user-profile" id="user-profile-btn">
+                                <div class="avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Aarya&background=random&color=fff"
+                                        alt="Avatar" id="nav-avatar-img">
+                                </div>
+                                <span class="username" id="nav-username">Aarya</span>
+                                <i class="ph ph-caret-down"></i>
                             </div>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item text-danger" id="nav-logout"><i class="ph ph-sign-out"></i>
-                                Logout</a>
+                            <div class="user-dropdown-menu" id="user-dropdown-menu">
+                                <a href="#" class="dropdown-item" data-target="myprofile"><i class="ph ph-user"></i> My
+                                    Profile</a>
+                                <a href="#" class="dropdown-item"><i class="ph ph-gear"></i> Settings</a>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item theme-toggle" id="theme-toggle">
+                                    <i class="ph ph-moon"></i> <span>Toggle Dark Mode</span>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item text-danger" id="nav-logout"><i
+                                        class="ph ph-sign-out"></i>
+                                    Logout</a>
+                            </div>
                         </div>
                     </div>
                 </header>
@@ -575,7 +608,8 @@
                                     <div class="message ai" style="display: flex; gap: 12px;">
                                         <div class="msg-avatar"
                                             style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                            <i class="ph-fill ph-robot"></i></div>
+                                            <i class="ph-fill ph-robot"></i>
+                                        </div>
                                         <div class="msg-bubble"
                                             style="background: rgba(255,255,255,0.05); padding: 12px 16px; border-radius: 12px; border-top-left-radius: 0; font-size: 14px; color: var(--text-secondary);">
                                             Need code from a lecture? Ask me and I'll generate the raw code for you!
@@ -683,9 +717,12 @@
                                 </div>
                                 <div class="profile-sidebar">
                                     <div class="tracker-card">
-                                        <h3><i class="ph-fill ph-clock-counter-clockwise" style="color: #6B4CE6;"></i> Recent Attempts</h3>
-                                        <p class="tracker-desc">View your recently attempted assessments and mock interviews.</p>
-                                        <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">Recent Attempts</button>
+                                        <h3><i class="ph-fill ph-clock-counter-clockwise" style="color: #6B4CE6;"></i>
+                                            Recent Attempts</h3>
+                                        <p class="tracker-desc">View your recently attempted assessments and mock
+                                            interviews.</p>
+                                        <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">Recent
+                                            Attempts</button>
                                     </div>
 
 
@@ -754,7 +791,8 @@
                             </div>
                             <div class="highlight-body">
                                 <div class="highlight-logo" style="background:#fff; overflow: hidden; padding: 4px;">
-                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/004/201/564/small/meta-social-network-emblem-blue-stylish-letter-m-or-mobius-band-vector.jpg" alt="Meta" style="width: 100%; height: 100%; object-fit: contain;">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/004/201/564/small/meta-social-network-emblem-blue-stylish-letter-m-or-mobius-band-vector.jpg"
+                                        alt="Meta" style="width: 100%; height: 100%; object-fit: contain;">
                                 </div>
                                 <div class="highlight-info">
                                     <h5>Meta</h5>
@@ -980,30 +1018,45 @@
                         <!-- Personal Details Card -->
                         <div class="tracker-card" style="max-width: 800px; margin-bottom: 20px;">
                             <h3 style="margin-bottom: 20px; font-size: 18px; color: #0F172A;">Personal Details</h3>
-                            
-                            <div style="display: flex; gap: 24px; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap;">
+
+                            <div
+                                style="display: flex; gap: 24px; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap;">
                                 <div class="form-group" style="flex: 0 0 auto;">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Profile Photo</label>
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Profile
+                                        Photo</label>
                                     <div style="display: flex; align-items: center; gap: 16px;">
-                                        <img src="https://ui-avatars.com/api/?name=Aarya&background=random&color=fff" style="width: 64px; height: 64px; border-radius: 50%;" id="manage-avatar-preview">
-                                        <button class="btn btn-secondary" id="btn-upload-photo" style="padding: 8px 16px;">Upload</button>
-                                        <input type="file" id="manage-photo-input" accept="image/*" style="display: none;">
+                                        <img src="https://ui-avatars.com/api/?name=Aarya&background=random&color=fff"
+                                            style="width: 64px; height: 64px; border-radius: 50%;"
+                                            id="manage-avatar-preview">
+                                        <button class="btn btn-secondary" id="btn-upload-photo"
+                                            style="padding: 8px 16px;">Upload</button>
+                                        <input type="file" id="manage-photo-input" accept="image/*"
+                                            style="display: none;">
                                     </div>
                                 </div>
                                 <div class="form-group" style="flex: 1; min-width: 250px;">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Full Name</label>
-                                    <input type="text" id="manage-name" class="bounty-input" value="Aarya" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Full
+                                        Name</label>
+                                    <input type="text" id="manage-name" class="bounty-input" value="Aarya"
+                                        style="width: 100%;">
                                 </div>
                             </div>
 
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Date of Birth</label>
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Date
+                                        of Birth</label>
                                     <input type="date" id="manage-dob" class="bounty-input" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Gender</label>
-                                    <select id="manage-gender" class="bounty-input" style="width: 100%; background: #fff;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Gender</label>
+                                    <select id="manage-gender" class="bounty-input"
+                                        style="width: 100%; background: #fff;">
                                         <option value="">Select Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -1011,41 +1064,60 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Current City</label>
-                                    <input type="text" id="manage-city" class="bounty-input" placeholder="e.g. Bangalore" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Current
+                                        City</label>
+                                    <input type="text" id="manage-city" class="bounty-input"
+                                        placeholder="e.g. Bangalore" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">State</label>
-                                    <input type="text" id="manage-state" class="bounty-input" placeholder="e.g. Karnataka" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">State</label>
+                                    <input type="text" id="manage-state" class="bounty-input"
+                                        placeholder="e.g. Karnataka" style="width: 100%;">
                                 </div>
                             </div>
 
                             <div class="form-group" style="margin-bottom: 20px;">
-                                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Bio</label>
-                                <textarea id="manage-bio" class="bounty-input" rows="3" style="width: 100%;">Aspiring AI Engineer passionate about scalable systems.</textarea>
+                                <label
+                                    style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Bio</label>
+                                <textarea id="manage-bio" class="bounty-input" rows="3"
+                                    style="width: 100%;">Aspiring AI Engineer passionate about scalable systems.</textarea>
                             </div>
                         </div>
 
                         <!-- Education Details Card -->
                         <div class="tracker-card" style="max-width: 800px; margin-bottom: 20px;">
                             <h3 style="margin-bottom: 20px; font-size: 18px; color: #0F172A;">Education Details</h3>
-                            
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
+
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">University Name</label>
-                                    <input type="text" id="manage-university" class="bounty-input" placeholder="e.g. IIT" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">University
+                                        Name</label>
+                                    <input type="text" id="manage-university" class="bounty-input"
+                                        placeholder="e.g. IIT" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Degree</label>
-                                    <input type="text" id="manage-degree" class="bounty-input" placeholder="e.g. B.Tech" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Degree</label>
+                                    <input type="text" id="manage-degree" class="bounty-input" placeholder="e.g. B.Tech"
+                                        style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Branch / Department</label>
-                                    <input type="text" id="manage-branch" class="bounty-input" placeholder="e.g. Computer Science" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Branch
+                                        / Department</label>
+                                    <input type="text" id="manage-branch" class="bounty-input"
+                                        placeholder="e.g. Computer Science" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Year of Study</label>
-                                    <select id="manage-year" class="bounty-input" style="width: 100%; background: #fff;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Year
+                                        of Study</label>
+                                    <select id="manage-year" class="bounty-input"
+                                        style="width: 100%; background: #fff;">
                                         <option value="">Select Year</option>
                                         <option value="1">1st Year</option>
                                         <option value="2">2nd Year</option>
@@ -1054,20 +1126,31 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Semester</label>
-                                    <input type="text" id="manage-semester" class="bounty-input" placeholder="e.g. 6th" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Semester</label>
+                                    <input type="text" id="manage-semester" class="bounty-input" placeholder="e.g. 6th"
+                                        style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Roll Number</label>
-                                    <input type="text" id="manage-rollno" class="bounty-input" placeholder="Your Roll Number" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Roll
+                                        Number</label>
+                                    <input type="text" id="manage-rollno" class="bounty-input"
+                                        placeholder="Your Roll Number" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Student ID (Optional)</label>
-                                    <input type="text" id="manage-studentid" class="bounty-input" placeholder="Your Student ID" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Student
+                                        ID (Optional)</label>
+                                    <input type="text" id="manage-studentid" class="bounty-input"
+                                        placeholder="Your Student ID" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">CGPA (Optional)</label>
-                                    <input type="number" step="0.01" id="manage-cgpa" class="bounty-input" placeholder="e.g. 8.5" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">CGPA
+                                        (Optional)</label>
+                                    <input type="number" step="0.01" id="manage-cgpa" class="bounty-input"
+                                        placeholder="e.g. 8.5" style="width: 100%;">
                                 </div>
                             </div>
                         </div>
@@ -1075,16 +1158,23 @@
                         <!-- Career Information Card -->
                         <div class="tracker-card" style="max-width: 800px; margin-bottom: 20px;">
                             <h3 style="margin-bottom: 20px; font-size: 18px; color: #0F172A;">Career Information</h3>
-                            
+
                             <div class="form-group" style="margin-bottom: 20px;">
-                                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Career Goal</label>
-                                <textarea id="manage-careergoal" class="bounty-input" rows="2" style="width: 100%;" placeholder="e.g. I want to build scalable AI systems for a leading tech company."></textarea>
+                                <label
+                                    style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Career
+                                    Goal</label>
+                                <textarea id="manage-careergoal" class="bounty-input" rows="2" style="width: 100%;"
+                                    placeholder="e.g. I want to build scalable AI systems for a leading tech company."></textarea>
                             </div>
 
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Preferred Domain</label>
-                                    <select id="manage-domain" class="bounty-input" style="width: 100%; background: #fff;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Preferred
+                                        Domain</label>
+                                    <select id="manage-domain" class="bounty-input"
+                                        style="width: 100%; background: #fff;">
                                         <option value="">Select Domain</option>
                                         <option value="AI/ML">AI / ML</option>
                                         <option value="Web Development">Web Development</option>
@@ -1095,8 +1185,11 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Preferred Internship Type</label>
-                                    <select id="manage-internship" class="bounty-input" style="width: 100%; background: #fff;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Preferred
+                                        Internship Type</label>
+                                    <select id="manage-internship" class="bounty-input"
+                                        style="width: 100%; background: #fff;">
                                         <option value="">Select Type</option>
                                         <option value="Remote">Remote</option>
                                         <option value="On-site">On-site</option>
@@ -1106,32 +1199,52 @@
                             </div>
 
                             <div class="form-group" style="margin-bottom: 20px;">
-                                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Interested Skills (Comma separated)</label>
-                                <input type="text" id="manage-interestedskills" class="bounty-input" placeholder="e.g. Python, React, PyTorch, Docker" style="width: 100%;">
+                                <label
+                                    style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Interested
+                                    Skills (Comma separated)</label>
+                                <input type="text" id="manage-interestedskills" class="bounty-input"
+                                    placeholder="e.g. Python, React, PyTorch, Docker" style="width: 100%;">
                             </div>
                         </div>
 
                         <!-- Social Profiles & Documents Card -->
                         <div class="tracker-card" style="max-width: 800px; margin-bottom: 20px;">
-                            <h3 style="margin-bottom: 20px; font-size: 18px; color: #0F172A;">Social Profiles & Documents</h3>
-                            
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                            <h3 style="margin-bottom: 20px; font-size: 18px; color: #0F172A;">Social Profiles &
+                                Documents</h3>
+
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px;">
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i class="fab fa-linkedin" style="color: #0A66C2;"></i> LinkedIn Profile URL</label>
-                                    <input type="url" id="manage-linkedin" class="bounty-input" placeholder="https://linkedin.com/in/username" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i
+                                            class="fab fa-linkedin" style="color: #0A66C2;"></i> LinkedIn Profile
+                                        URL</label>
+                                    <input type="url" id="manage-linkedin" class="bounty-input"
+                                        placeholder="https://linkedin.com/in/username" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i class="fab fa-github" style="color: #333;"></i> GitHub Profile URL</label>
-                                    <input type="url" id="manage-github" class="bounty-input" placeholder="https://github.com/username" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i
+                                            class="fab fa-github" style="color: #333;"></i> GitHub Profile URL</label>
+                                    <input type="url" id="manage-github" class="bounty-input"
+                                        placeholder="https://github.com/username" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i class="ph-fill ph-globe" style="color: #4CAF50;"></i> Portfolio Website</label>
-                                    <input type="url" id="manage-portfolio" class="bounty-input" placeholder="https://yourwebsite.com" style="width: 100%;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i
+                                            class="ph-fill ph-globe" style="color: #4CAF50;"></i> Portfolio
+                                        Website</label>
+                                    <input type="url" id="manage-portfolio" class="bounty-input"
+                                        placeholder="https://yourwebsite.com" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i class="ph-fill ph-file-pdf" style="color: #ef4444;"></i> Resume Upload (PDF)</label>
+                                    <label
+                                        style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i
+                                            class="ph-fill ph-file-pdf" style="color: #ef4444;"></i> Resume Upload
+                                        (PDF)</label>
                                     <div style="display: flex; gap: 10px; align-items: center;">
-                                        <input type="file" id="manage-resume" accept=".pdf" style="width: 100%; padding: 8px; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 14px; background: #fff;">
+                                        <input type="file" id="manage-resume" accept=".pdf"
+                                            style="width: 100%; padding: 8px; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 14px; background: #fff;">
                                     </div>
                                 </div>
                             </div>
@@ -1139,16 +1252,19 @@
                         <div class="tracker-card" style="max-width: 600px; margin-top: 20px;">
                             <h3><i class="ph-fill ph-heartbeat" style="color: #ef4444;"></i> Medical &
                                 Physical Tracker</h3>
-                            <p class="tracker-desc">Verified criteria for Defense, Aviation, Merchant Navy, and Core Engineering.</p>
+                            <p class="tracker-desc">Verified criteria for Defense, Aviation, Merchant Navy, and Core
+                                Engineering.</p>
 
                             <div class="tracker-item">
                                 <span class="label">Vision</span>
-                                <span class="value valid">6/6 (Uncorrected) <i class="ph-fill ph-check-circle"></i></span>
+                                <span class="value valid">6/6 (Uncorrected) <i
+                                        class="ph-fill ph-check-circle"></i></span>
                             </div>
                             <div class="tracker-item">
                                 <span class="label">Height</span>
                                 <div class="height-input-group">
-                                    <input type="number" id="user-height" value="175" min="100" max="250" class="inline-input"> <span>cm</span>
+                                    <input type="number" id="user-height" value="175" min="100" max="250"
+                                        class="inline-input"> <span>cm</span>
                                 </div>
                             </div>
                             <div class="tracker-item">
@@ -1157,9 +1273,11 @@
                             </div>
                             <button class="btn btn-primary" style="margin-top: 16px;">Save Medical Profile</button>
                         </div>
-                        
-                        <div style="max-width: 800px; display: flex; justify-content: flex-end; margin-bottom: 40px; margin-top: 20px;">
-                            <button class="btn btn-primary" id="btn-save-all-profile" style="padding: 12px 32px; font-size: 16px;">Save All Changes</button>
+
+                        <div
+                            style="max-width: 800px; display: flex; justify-content: flex-end; margin-bottom: 40px; margin-top: 20px;">
+                            <button class="btn btn-primary" id="btn-save-all-profile"
+                                style="padding: 12px 32px; font-size: 16px;">Save All Changes</button>
                         </div>
                     </div>
 

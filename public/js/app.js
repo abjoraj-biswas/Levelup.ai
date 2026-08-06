@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userDropdownMenu = document.getElementById('user-dropdown-menu');
     const themeToggleBtn = document.getElementById('theme-toggle');
     const logoutBtn = document.getElementById('nav-logout');
-    
+
     if (userProfileBtn && userDropdownMenu) {
         userProfileBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -67,20 +67,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // --- Notification Dropdown ---
+        const notificationBtn = document.getElementById('notification-btn');
+        const notificationDropdown = document.getElementById('notification-dropdown');
+        if (notificationBtn && notificationDropdown) {
+            notificationBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (notificationDropdown.style.display === 'none') {
+                    notificationDropdown.style.display = 'block';
+                } else {
+                    notificationDropdown.style.display = 'none';
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!notificationDropdown.contains(e.target) && !notificationBtn.contains(e.target)) {
+                    notificationDropdown.style.display = 'none';
+                }
+            });
+        }
+
         // Dropdown Navigation
         const dropdownItems = userDropdownMenu.querySelectorAll('.dropdown-item[data-target]');
         dropdownItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = item.getAttribute('data-target');
-                
+
                 // Hide dropdown
                 userDropdownMenu.classList.remove('show');
-                
+
                 // Switch view
                 navItems.forEach(nav => nav.classList.remove('active'));
                 views.forEach(view => view.classList.remove('active'));
-                
+
                 const targetView = document.getElementById(`view-${targetId}`);
                 if (targetView) {
                     targetView.classList.add('active');
@@ -96,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('dark-mode');
             const icon = themeToggleBtn.querySelector('i');
             const text = themeToggleBtn.querySelector('span');
-            
+
             if (document.body.classList.contains('dark-mode')) {
                 icon.classList.remove('ph-moon');
                 icon.classList.add('ph-sun');
@@ -124,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSaveProfile) {
         btnSaveProfile.addEventListener('click', async () => {
             const newName = document.getElementById('manage-name').value;
-            
+
             try {
                 // Update backend
                 await fetchWithAuth('/api/profile', {
@@ -136,14 +156,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const navUsername = document.getElementById('nav-username');
                 const navAvatarImg = document.getElementById('nav-avatar-img');
                 const manageAvatarImg = document.getElementById('manage-avatar-preview');
-                
+
                 if (navUsername) navUsername.textContent = newName;
-                
+
                 // Simple avatar generation based on name
                 const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(newName)}&background=random&color=fff`;
                 if (navAvatarImg) navAvatarImg.src = avatarUrl;
                 if (manageAvatarImg) manageAvatarImg.src = avatarUrl;
-                
+
                 alert('Profile saved successfully!');
             } catch (err) {
                 console.error("Failed to save profile:", err);
@@ -179,13 +199,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const pointsEl = document.getElementById('live-bounty-points');
         const progressFill = document.getElementById('cert-progress-fill');
         const certUnlock = document.getElementById('certificate-unlock');
-        
+
         if (pointsEl) pointsEl.textContent = points;
-        
+
         if (progressFill) {
             const percentage = Math.min(100, (points / 5000) * 100);
             progressFill.style.width = percentage + '%';
-            
+
             if (percentage >= 100 && certUnlock) {
                 certUnlock.style.display = 'flex';
             }
@@ -217,11 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderMessage(msg) {
         const div = document.createElement('div');
         div.className = `message ${msg.sender}`;
-        
+
         const avatar = document.createElement('div');
         avatar.className = 'msg-avatar';
         avatar.innerHTML = msg.sender === 'ai' ? '<i class="ph-fill ph-robot"></i>' : 'A';
-        
+
         const bubble = document.createElement('div');
         bubble.className = 'msg-bubble';
         bubble.textContent = msg.text;
@@ -253,13 +273,13 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: text })
         })
-        .then(res => res.json())
-        .then(data => {
-            if (data.aiMessage) {
-                renderMessage(data.aiMessage);
-            }
-        })
-        .catch(err => console.error("Chat error:", err));
+            .then(res => res.json())
+            .then(data => {
+                if (data.aiMessage) {
+                    renderMessage(data.aiMessage);
+                }
+            })
+            .catch(err => console.error("Chat error:", err));
     }
 
     chatSendBtn.addEventListener('click', sendMessage);
@@ -281,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
         div.className = `message ${msg.sender}`;
         div.style.display = 'flex';
         div.style.gap = '12px';
-        
+
         const avatar = document.createElement('div');
         avatar.className = 'msg-avatar';
         avatar.style.width = '32px';
@@ -293,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         avatar.style.justifyContent = 'center';
         avatar.style.flexShrink = '0';
         avatar.innerHTML = msg.sender === 'ai' ? '<i class="ph-fill ph-robot"></i>' : 'U';
-        
+
         const bubble = document.createElement('div');
         bubble.className = 'msg-bubble';
         bubble.style.background = 'rgba(255,255,255,0.05)';
@@ -344,19 +364,19 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: text, history: codeChatHistory })
         })
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById(loadingId)?.remove();
-            if (data.aiMessage) {
-                renderCodeMessage(data.aiMessage);
-                codeChatHistory.push({ role: 'user', content: text });
-                codeChatHistory.push({ role: 'assistant', content: data.aiMessage.text });
-            }
-        })
-        .catch(err => {
-            document.getElementById(loadingId)?.remove();
-            console.error("Code Chat error:", err);
-        });
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById(loadingId)?.remove();
+                if (data.aiMessage) {
+                    renderCodeMessage(data.aiMessage);
+                    codeChatHistory.push({ role: 'user', content: text });
+                    codeChatHistory.push({ role: 'assistant', content: data.aiMessage.text });
+                }
+            })
+            .catch(err => {
+                document.getElementById(loadingId)?.remove();
+                console.error("Code Chat error:", err);
+            });
     }
 
     if (codeChatSendBtn && codeChatInput) {
@@ -383,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bounties.forEach(bounty => {
             const card = document.createElement('div');
             card.className = 'bounty-card';
-            
+
             let gemmaMatchHtml = '';
             if (bounty.gemma_match >= 90) {
                 gemmaMatchHtml = `<div class="bounty-badge"><i class="ph-fill ph-sparkle"></i> ${bounty.gemma_match}% Match by Gemma AI</div>`;
@@ -392,9 +412,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const skillsHtml = bounty.required_skills.map(s => `<span class="bounty-skill">${s}</span>`).join('');
-            
+
             const isCompleted = bounty.status === 'Completed';
-            const actionHtml = isCompleted 
+            const actionHtml = isCompleted
                 ? `<span class="bounty-status"><i class="ph-fill ph-check-circle" style="color:#10B981;"></i> Completed</span>`
                 : `<button class="btn btn-primary" onclick="openBountyModal('${bounty.bounty_id}', '${bounty.title.replace(/'/g, "\\'")}')">Submit Code</button>`;
 
@@ -471,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    window.openBountyModal = function(id, title) {
+    window.openBountyModal = function (id, title) {
         currentBountyId = id;
         modalBountyTitle.textContent = title;
         bountyUrlInput.value = '';
@@ -493,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Please enter a URL to your code.");
                 return;
             }
-            
+
             btnSubmitBounty.style.display = 'none';
             aiStatus.style.display = 'flex';
 
@@ -502,43 +522,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url: bountyUrlInput.value })
             })
-            .then(res => {
-                if (!res.ok) throw new Error('Backend not available');
-                return res.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    handleSuccess(data.newPoints);
-                } else {
-                    throw new Error('Submission failed');
-                }
-            })
-            .catch(err => {
-                console.warn("Falling back to local submission simulation:", err);
-                setTimeout(() => {
-                    const bounty = fallbackBounties.find(b => b.bounty_id === currentBountyId) || { reward_amount: "1000 XP" };
-                    let currentPoints = parseInt(document.getElementById('live-bounty-points').textContent) || 400;
-                    const pointsMatch = bounty.reward_amount.match(/\d+/);
-                    if (pointsMatch) {
-                        currentPoints += parseInt(pointsMatch[0], 10);
+                .then(res => {
+                    if (!res.ok) throw new Error('Backend not available');
+                    return res.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        handleSuccess(data.newPoints);
+                    } else {
+                        throw new Error('Submission failed');
                     }
-                    handleSuccess(currentPoints);
-                }, 1500);
-            });
+                })
+                .catch(err => {
+                    console.warn("Falling back to local submission simulation:", err);
+                    setTimeout(() => {
+                        const bounty = fallbackBounties.find(b => b.bounty_id === currentBountyId) || { reward_amount: "1000 XP" };
+                        let currentPoints = parseInt(document.getElementById('live-bounty-points').textContent) || 400;
+                        const pointsMatch = bounty.reward_amount.match(/\d+/);
+                        if (pointsMatch) {
+                            currentPoints += parseInt(pointsMatch[0], 10);
+                        }
+                        handleSuccess(currentPoints);
+                    }, 1500);
+                });
 
             function handleSuccess(newPoints) {
                 aiStatus.style.display = 'none';
                 aiSuccess.style.display = 'flex';
-                
+
                 updateBountyPointsUI(newPoints);
-                
+
                 const cardBtn = document.querySelector(`button[onclick*="${currentBountyId}"]`);
                 if (cardBtn) {
                     const footer = cardBtn.parentElement;
                     cardBtn.remove();
                     footer.insertAdjacentHTML('beforeend', '<span class="bounty-status"><i class="ph-fill ph-check-circle" style="color:#10B981;"></i> Completed</span>');
                 }
-                
+
                 setTimeout(() => {
                     bountyModal.style.display = 'none';
                 }, 2000);
@@ -654,22 +674,22 @@ const pathSkillsData = {
     ]
 };
 
-window.openPathModal = function(category) {
+window.openPathModal = function (category) {
     const modal = document.getElementById('path-modal');
     const title = document.getElementById('modal-path-title');
     const skillsContainer = document.getElementById('modal-path-skills');
-    
-    if(!modal || !title || !skillsContainer) return;
+
+    if (!modal || !title || !skillsContainer) return;
 
     title.textContent = category + ' Path';
     skillsContainer.innerHTML = '';
-    
+
     const skills = pathSkillsData[category] || [];
     if (skills.length === 0) {
         skillsContainer.innerHTML = '<p style="font-size: 13px; color: var(--text-secondary);">Skills coming soon!</p>';
     } else {
         let html = '<div class="skills-card-grid">';
-        
+
         skills.forEach(item => {
             html += `
                 <div class="skill-card-box">
@@ -685,17 +705,17 @@ window.openPathModal = function(category) {
                 </div>
             `;
         });
-        
+
         html += '</div>';
         skillsContainer.innerHTML = html;
     }
-    
+
     modal.style.display = 'flex';
 };
 
-window.closePathModal = function() {
+window.closePathModal = function () {
     const modal = document.getElementById('path-modal');
-    if(modal) modal.style.display = 'none';
+    if (modal) modal.style.display = 'none';
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -765,12 +785,49 @@ document.addEventListener('DOMContentLoaded', () => {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(event) {
+                reader.onload = function (event) {
                     if (avatarPreview) {
                         avatarPreview.src = event.target.result;
                     }
                 };
                 reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // --- Load Saved Profile ---
+    const savedName = localStorage.getItem('profileName');
+    const navUsername = document.getElementById('nav-username');
+    const navAvatarImg = document.getElementById('nav-avatar-img');
+    const manageNameInput = document.getElementById('manage-name');
+
+    if (savedName) {
+        if (navUsername) navUsername.textContent = savedName;
+        if (manageNameInput) manageNameInput.value = savedName;
+        if (navAvatarImg) {
+            navAvatarImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(savedName)}&background=random&color=fff`;
+        }
+    }
+
+    // --- Save All Changes Logic ---
+    const btnSaveAllProfile = document.getElementById('btn-save-all-profile');
+    if (btnSaveAllProfile && manageNameInput) {
+        btnSaveAllProfile.addEventListener('click', () => {
+            const newName = manageNameInput.value.trim();
+            if (newName) {
+                // Save to localStorage
+                localStorage.setItem('profileName', newName);
+
+                // Update UI
+                if (navUsername) navUsername.textContent = newName;
+                if (navAvatarImg) {
+                    navAvatarImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(newName)}&background=random&color=fff`;
+                }
+
+                // Show basic success alert
+                alert('Profile updated successfully!');
+            } else {
+                alert('Please enter a valid name.');
             }
         });
     }

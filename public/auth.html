@@ -182,17 +182,22 @@
             }
         });
 
-        // Intercept OAuth Redirect Hash
+        // Intercept OAuth Redirect Hash or Check Existing Session
         window.addEventListener('load', () => {
             const hash = window.location.hash;
+            const token = localStorage.getItem('supabase_token');
+            
             if (hash && hash.includes('access_token=')) {
                 const params = new URLSearchParams(hash.substring(1));
-                const token = params.get('access_token');
-                if (token) {
-                    localStorage.setItem('supabase_token', token);
+                const accessToken = params.get('access_token');
+                if (accessToken) {
+                    localStorage.setItem('supabase_token', accessToken);
                     window.location.hash = '';
                     window.location.href = '/index.html';
                 }
+            } else if (token) {
+                // Already logged in, go straight to dashboard
+                window.location.href = '/index.html';
             }
         });
     </script>

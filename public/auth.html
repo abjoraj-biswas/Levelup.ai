@@ -45,13 +45,13 @@
 
                 <div class="form-group" id="emailGroup">
                     <label>Email</label>
-                    <input type="email" id="loginEmail" placeholder="Input your email" required>
+                    <input type="email" id="loginEmail" placeholder="Input your email">
                 </div>
 
                 <div class="form-group" id="passwordGroup">
                     <label>Password</label>
                     <div class="password-input-wrapper">
-                        <input type="password" id="password" placeholder="Input your password" required>
+                        <input type="password" id="password" placeholder="Input your password">
                         <button type="button" class="toggle-password" id="togglePassword">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -62,6 +62,8 @@
                     <label>Verification Code (Check console for simulated email)</label>
                     <input type="text" id="loginOtp" placeholder="Enter 6-digit OTP" autocomplete="one-time-code">
                 </div>
+
+                <div id="errorMessage" style="display: none; color: #ff6b6b; margin-bottom: 15px; font-size: 14px; text-align: center; background: rgba(255, 107, 107, 0.1); padding: 10px; border-radius: 8px;"></div>
 
                 <button type="submit" class="btn-submit" id="submitBtn">Sign In</button>
             </form>
@@ -95,12 +97,29 @@
         document.getElementById('authForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const email = document.getElementById('loginEmail').value;
+            const email = document.getElementById('loginEmail').value.trim();
             const password = document.getElementById('password').value;
-            const otp = document.getElementById('loginOtp').value;
+            const otp = document.getElementById('loginOtp').value.trim();
             const btn = document.getElementById('submitBtn');
+            const errorMsg = document.getElementById('errorMessage');
             const origText = btn.innerHTML;
             
+            errorMsg.style.display = 'none';
+
+            if (loginState === 'step1') {
+                if (!email || !password) {
+                    errorMsg.textContent = 'Please enter both your email and password.';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+            } else if (loginState === 'step2') {
+                if (!otp) {
+                    errorMsg.textContent = 'Please enter the verification code.';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+            }
+
             btn.innerHTML = 'Processing...';
             btn.disabled = true;
 

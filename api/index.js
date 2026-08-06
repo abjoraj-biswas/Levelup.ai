@@ -152,7 +152,7 @@ const requireAuth = async (req, res, next) => {
 // --- API ENDPOINTS ---
 
 app.get('/api/profile', requireAuth, async (req, res) => {
-    const { data, error } = await supabase.database
+    const { data, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', req.user.id)
@@ -176,7 +176,7 @@ app.put('/api/profile', requireAuth, async (req, res) => {
     const profileData = req.body;
     
     // Upsert the profile data (insert if missing, update if exists)
-    const { data, error } = await supabase.database
+    const { data, error } = await supabase
         .from('profiles')
         .upsert({ 
             id: req.user.id,
@@ -195,7 +195,7 @@ app.put('/api/profile', requireAuth, async (req, res) => {
 
 app.get('/api/roadmap', requireAuth, async (req, res) => {
     // Fetch roadmaps and associated courses
-    const { data: roadmaps, error: roadmapError } = await supabase.database
+    const { data: roadmaps, error: roadmapError } = await supabase
         .from('roadmaps')
         .select('*, courses(*)')
         .eq('user_id', req.user.id)
@@ -207,7 +207,7 @@ app.get('/api/roadmap', requireAuth, async (req, res) => {
 });
 
 app.get('/api/mentor/chat', requireAuth, async (req, res) => {
-    const { data, error } = await supabase.database
+    const { data, error } = await supabase
         .from('chat_messages')
         .select('*')
         .eq('user_id', req.user.id)
@@ -227,7 +227,7 @@ app.post('/api/mentor/chat', requireAuth, async (req, res) => {
     // Fetch last 5 messages for context BEFORE inserting the new one
     let history = [];
     try {
-        const { data } = await supabase.database
+        const { data } = await supabase
             .from('chat_messages')
             .select('*')
             .eq('user_id', req.user.id)
@@ -281,7 +281,7 @@ app.post('/api/mentor/chat', requireAuth, async (req, res) => {
         const aiResponseText = data.message?.content || "Sorry, I couldn't generate a response.";
 
         // 3. Insert AI Message
-        const { data: aiMessageObj, error: insertError } = await supabase.database
+        const { data: aiMessageObj, error: insertError } = await supabase
             .from('chat_messages')
             .insert({
                 user_id: req.user.id,
@@ -348,7 +348,7 @@ app.post('/api/mentor/code_chat', requireAuth, async (req, res) => {
 });
 app.get('/api/bounties', requireAuth, async (req, res) => {
     // Fetch all global bounties
-    const { data: bounties, error } = await supabase.database
+    const { data: bounties, error } = await supabase
         .from('bounties')
         .select('*')
         .order('created_at', { ascending: false });
@@ -356,7 +356,7 @@ app.get('/api/bounties', requireAuth, async (req, res) => {
     if (error) return res.status(500).json({ error: error.message });
     
     // Fetch user progress on bounties
-    const { data: userBounties, error: ubError } = await supabase.database
+    const { data: userBounties, error: ubError } = await supabase
         .from('user_bounties')
         .select('*')
         .eq('user_id', req.user.id);
@@ -380,7 +380,7 @@ app.post('/api/bounties/:id/submit', requireAuth, async (req, res) => {
     
     if (!url) return res.status(400).json({ error: 'Submission URL required' });
 
-    const { data: bounty, error: bountyError } = await supabase.database
+    const { data: bounty, error: bountyError } = await supabase
         .from('bounties')
         .select('*')
         .eq('bounty_id', bountyId)

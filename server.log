@@ -171,3 +171,99 @@ Error inserting AI message: {
    Your verification code is: 953755
 ==========================================
 
+
+==========================================
+🔒 Simulated 2FA Email to abjoraj203@gmail.com
+   Your verification code is: 752009
+==========================================
+
+Error inserting user message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+Error inserting AI message: {
+  code: '23503',
+  details: 'Key is not present in table "profiles".',
+  hint: null,
+  message: 'insert or update on table "chat_messages" violates foreign key constraint "chat_messages_user_id_fkey"'
+}
+
+==========================================
+🔒 Simulated 2FA Email to abjoraj203@gmail.com
+   Your verification code is: 607608
+==========================================
+
+Auth Error: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo ENOTFOUND 8m492uqc.us-east.insforge.app
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: '8m492uqc.us-east.insforge.app'
+  }
+}
+Auth Error: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo ENOTFOUND 8m492uqc.us-east.insforge.app
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: '8m492uqc.us-east.insforge.app'
+  }
+}
+Auth Error: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo ENOTFOUND 8m492uqc.us-east.insforge.app
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: '8m492uqc.us-east.insforge.app'
+  }
+}
+Auth Error: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo ENOTFOUND 8m492uqc.us-east.insforge.app
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: '8m492uqc.us-east.insforge.app'
+  }
+}
+Auth Error: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo ENOTFOUND 8m492uqc.us-east.insforge.app
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: '8m492uqc.us-east.insforge.app'
+  }
+}
+Auth Error: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo ENOTFOUND 8m492uqc.us-east.insforge.app
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: '8m492uqc.us-east.insforge.app'
+  }
+}
+Auth Error: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo ENOTFOUND 8m492uqc.us-east.insforge.app
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: '8m492uqc.us-east.insforge.app'
+  }
+}
+Auth Error: [TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo ENOTFOUND 8m492uqc.us-east.insforge.app
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: '8m492uqc.us-east.insforge.app'
+  }
+}

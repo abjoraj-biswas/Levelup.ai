@@ -12,50 +12,47 @@ const openai = new OpenAI({
 const app = express();
 const PORT = process.env.PORT || 5500;
 
-// Initialize InsForge Client dynamically (to support ESM exports in CJS)
-let insforge;
+// Initialize Supabase Client dynamically (to support ESM exports in CJS)
+let supabase;
 let initError = null;
 
-async function initInsforge() {
+async function initSupabase() {
     try {
-        const { createClient } = await import('@insforge/sdk');
-        const insforgeUrl = process.env.INSFORGE_API_URL;
-        const insforgeAnonKey = process.env.INSFORGE_ANON_KEY;
+        const { createClient } = require('@supabase/supabase-js');
+        const supabaseUrl = process.env.SUPABASE_URL;
+        const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
         
-        if (insforgeUrl && insforgeAnonKey) {
-            insforge = createClient({
-                baseUrl: insforgeUrl,
-                anonKey: insforgeAnonKey
-            });
-            console.log("✅ InsForge SDK Client Initialized");
+        if (supabaseUrl && supabaseAnonKey) {
+            supabase = createClient(supabaseUrl, supabaseAnonKey);
+            console.log("✅ Supabase SDK Client Initialized");
         } else {
-            initError = "InsForge credentials not found in environment. URL: " + (insforgeUrl ? 'Found' : 'Missing') + ", Key: " + (insforgeAnonKey ? 'Found' : 'Missing');
+            initError = "Supabase credentials not found in environment. URL: " + (supabaseUrl ? 'Found' : 'Missing') + ", Key: " + (supabaseAnonKey ? 'Found' : 'Missing');
             console.warn("⚠️ " + initError);
         }
     } catch (err) {
         initError = err.toString() + (err.stack ? "\n" + err.stack : "");
-        console.error("Failed to initialize InsForge:", err);
+        console.error("Failed to initialize Supabase:", err);
     }
 }
-let initPromise = initInsforge();
+let initPromise = initSupabase();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ensure InsForge is initialized before handling any API requests
+// Ensure Supabase is initialized before handling any API requests
 app.use('/api', async (req, res, next) => {
     await initPromise;
     next();
 });
 
-app.get('/api/insforge-status', async (req, res) => {
-    if (!insforge) {
-        return res.status(500).json({ error: "InsForge client not initialized", details: initError });
+app.get('/api/supabase-status', async (req, res) => {
+    if (!supabase) {
+        return res.status(500).json({ error: "Supabase client not initialized", details: initError });
     }
     // Simple test query to check if the connection is alive
-    const { data, error } = await insforge.database.from('profiles').select('*').limit(1);
+    const { data, error } = await supabase.from('profiles').select('*').limit(1);
     
     if (error) {
         // Even if the table doesn't exist, if it connects and returns a postgres error (e.g., 42P01 undefined_table), the connection is working.
@@ -71,9 +68,9 @@ const loginOtps = new Map(); // Store simulated OTPs: email -> { otp, accessToke
 
 app.post('/api/auth/signup', async (req, res) => {
     const { email, password, name } = req.body;
-    if (!insforge) return res.status(500).json({ error: "InsForge not configured" });
+    if (!supabase) return res.status(500).json({ error: "Supabase not configured" });
     
-    const { data, error } = await insforge.auth.signUp({ email, password, name });
+    const { data, error } = await supabase.auth.signUp({ email, password, name });
     if (error) return res.status(400).json({ error: error.message });
     
     res.json({ message: "Sign up successful, please verify email.", data });
@@ -81,9 +78,9 @@ app.post('/api/auth/signup', async (req, res) => {
 
 app.post('/api/auth/verify-signup', async (req, res) => {
     const { email, otp } = req.body;
-    if (!insforge) return res.status(500).json({ error: "InsForge not configured" });
+    if (!supabase) return res.status(500).json({ error: "Supabase not configured" });
     
-    const { data, error } = await insforge.auth.verifyEmail({ email, otp });
+    const { data, error } = await supabase.auth.verifyEmail({ email, otp });
     if (error) return res.status(400).json({ error: error.message });
     
     res.json({ message: "Verification successful", data });
@@ -91,9 +88,9 @@ app.post('/api/auth/verify-signup', async (req, res) => {
 
 app.post('/api/auth/login-step1', async (req, res) => {
     const { email, password } = req.body;
-    if (!insforge) return res.status(500).json({ error: "InsForge not configured", details: initError });
+    if (!supabase) return res.status(500).json({ error: "Supabase not configured", details: initError });
     
-    const { data, error } = await insforge.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) return res.status(400).json({ error: error.message });
     
     // Generate 6-digit OTP for 2FA
@@ -136,22 +133,15 @@ const requireAuth = async (req, res, next) => {
     }
     const token = authHeader.split(' ')[1];
     
-    if (!insforge) return res.status(500).json({ error: "InsForge not configured" });
+    if (!supabase) return res.status(500).json({ error: "Supabase not configured" });
     
     try {
-        const response = await fetch(`${process.env.INSFORGE_API_URL}/api/auth/sessions/current`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
+        const { data: { user }, error } = await supabase.auth.getUser(token);
         
-        if (!response.ok) {
+        if (error || !user) {
             return res.status(401).json({ error: 'Unauthorized: Invalid token' });
         }
-        
-        const data = await response.json();
-        if (!data.user) {
-            return res.status(401).json({ error: 'Unauthorized: Invalid token' });
-        }
-        req.user = data.user;
+        req.user = user;
         next();
     } catch(err) {
         console.error("Auth Error:", err);
@@ -162,7 +152,7 @@ const requireAuth = async (req, res, next) => {
 // --- API ENDPOINTS ---
 
 app.get('/api/profile', requireAuth, async (req, res) => {
-    const { data, error } = await insforge.database
+    const { data, error } = await supabase.database
         .from('profiles')
         .select('*')
         .eq('id', req.user.id)
@@ -186,7 +176,7 @@ app.put('/api/profile', requireAuth, async (req, res) => {
     const profileData = req.body;
     
     // Upsert the profile data (insert if missing, update if exists)
-    const { data, error } = await insforge.database
+    const { data, error } = await supabase.database
         .from('profiles')
         .upsert({ 
             id: req.user.id,
@@ -205,7 +195,7 @@ app.put('/api/profile', requireAuth, async (req, res) => {
 
 app.get('/api/roadmap', requireAuth, async (req, res) => {
     // Fetch roadmaps and associated courses
-    const { data: roadmaps, error: roadmapError } = await insforge.database
+    const { data: roadmaps, error: roadmapError } = await supabase.database
         .from('roadmaps')
         .select('*, courses(*)')
         .eq('user_id', req.user.id)
@@ -217,7 +207,7 @@ app.get('/api/roadmap', requireAuth, async (req, res) => {
 });
 
 app.get('/api/mentor/chat', requireAuth, async (req, res) => {
-    const { data, error } = await insforge.database
+    const { data, error } = await supabase.database
         .from('chat_messages')
         .select('*')
         .eq('user_id', req.user.id)
@@ -232,12 +222,12 @@ app.post('/api/mentor/chat', requireAuth, async (req, res) => {
     if (!userMessage) return res.status(400).json({ error: 'Message required' });
 
     // Ensure profile exists to avoid foreign key violations
-    await insforge.database.from('profiles').upsert({ id: req.user.id }, { onConflict: 'id' });
+    await supabase.from('profiles').upsert({ id: req.user.id }, { onConflict: 'id' });
 
     // Fetch last 5 messages for context BEFORE inserting the new one
     let history = [];
     try {
-        const { data } = await insforge.database
+        const { data } = await supabase.database
             .from('chat_messages')
             .select('*')
             .eq('user_id', req.user.id)
@@ -249,7 +239,7 @@ app.post('/api/mentor/chat', requireAuth, async (req, res) => {
     }
 
     // 1. Insert User Message
-    const { error: err1 } = await insforge.database.from('chat_messages').insert({
+    const { error: err1 } = await supabase.from('chat_messages').insert({
         user_id: req.user.id,
         sender: 'user',
         text: userMessage
@@ -291,7 +281,7 @@ app.post('/api/mentor/chat', requireAuth, async (req, res) => {
         const aiResponseText = data.message?.content || "Sorry, I couldn't generate a response.";
 
         // 3. Insert AI Message
-        const { data: aiMessageObj, error: insertError } = await insforge.database
+        const { data: aiMessageObj, error: insertError } = await supabase.database
             .from('chat_messages')
             .insert({
                 user_id: req.user.id,
@@ -358,7 +348,7 @@ app.post('/api/mentor/code_chat', requireAuth, async (req, res) => {
 });
 app.get('/api/bounties', requireAuth, async (req, res) => {
     // Fetch all global bounties
-    const { data: bounties, error } = await insforge.database
+    const { data: bounties, error } = await supabase.database
         .from('bounties')
         .select('*')
         .order('created_at', { ascending: false });
@@ -366,7 +356,7 @@ app.get('/api/bounties', requireAuth, async (req, res) => {
     if (error) return res.status(500).json({ error: error.message });
     
     // Fetch user progress on bounties
-    const { data: userBounties, error: ubError } = await insforge.database
+    const { data: userBounties, error: ubError } = await supabase.database
         .from('user_bounties')
         .select('*')
         .eq('user_id', req.user.id);
@@ -390,7 +380,7 @@ app.post('/api/bounties/:id/submit', requireAuth, async (req, res) => {
     
     if (!url) return res.status(400).json({ error: 'Submission URL required' });
 
-    const { data: bounty, error: bountyError } = await insforge.database
+    const { data: bounty, error: bountyError } = await supabase.database
         .from('bounties')
         .select('*')
         .eq('bounty_id', bountyId)
@@ -444,7 +434,7 @@ Respond with exactly one word: VALID or INVALID.`;
         const aiResponse = (data.response || "").trim().toUpperCase();
 
         if (aiResponse.includes("VALID") && !aiResponse.includes("INVALID")) {
-            await insforge.database.from('user_bounties').upsert({
+            await supabase.from('user_bounties').upsert({
                 user_id: req.user.id,
                 bounty_id: bounty.id,
                 status: 'Completed',
@@ -454,10 +444,10 @@ Respond with exactly one word: VALID or INVALID.`;
             const pointsMatch = bounty.reward_amount.match(/\d+/);
             const rewardPoints = pointsMatch ? parseInt(pointsMatch[0], 10) : 0;
             
-            const { data: profile } = await insforge.database.from('profiles').select('bounty_points').eq('id', req.user.id).single();
+            const { data: profile } = await supabase.from('profiles').select('bounty_points').eq('id', req.user.id).single();
             const newPoints = (profile?.bounty_points || 0) + rewardPoints;
             
-            await insforge.database.from('profiles').upsert({ id: req.user.id, bounty_points: newPoints });
+            await supabase.from('profiles').upsert({ id: req.user.id, bounty_points: newPoints });
                 
             return res.json({ success: true, message: 'Bounty verified and completed!', bounty, newPoints });
         } else {

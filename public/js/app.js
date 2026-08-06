@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Backend API Integration ---
     async function fetchWithAuth(url, options = {}) {
-        const token = localStorage.getItem('insforge_token');
+        const token = localStorage.getItem('supabase_token');
         if (!token) {
             window.location.href = 'auth.html';
             throw new Error('No token found');
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const baseUrl = window.location.port === '5501' || window.location.protocol === 'file:' ? 'http://localhost:5500' : '';
         const response = await fetch(baseUrl + url, { ...options, headers });
         if (response.status === 401) {
-            localStorage.removeItem('insforge_token');
+            localStorage.removeItem('supabase_token');
             window.location.href = 'auth.html';
             throw new Error('Unauthorized');
         }

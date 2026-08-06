@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Store token in localStorage
             if (data.data && data.data.accessToken) {
-                localStorage.setItem('insforge_token', data.data.accessToken);
+                localStorage.setItem('supabase_token', data.data.accessToken);
             }
             
             checkAllVerified();
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 college: inputs[7] ? inputs[7].value : null
             };
 
-            const token = localStorage.getItem('insforge_token');
+            const token = localStorage.getItem('supabase_token');
             if (token) {
                 const baseUrl = window.location.port === '5501' || window.location.protocol === 'file:' ? 'http://localhost:5500' : '';
                 await fetch(baseUrl + '/api/profile', {

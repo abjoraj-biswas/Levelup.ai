@@ -106,7 +106,7 @@ app.post('/api/auth/login-step1', async (req, res) => {
     console.log(`   Your verification code is: ${otp}`);
     console.log(`==========================================\n`);
     
-    res.json({ message: "2FA OTP sent to your email", requireOtp: true });
+    res.json({ message: `2FA OTP sent to your email (Simulated Code: ${otp})`, requireOtp: true });
 });
 
 app.post('/api/auth/login-step2', async (req, res) => {

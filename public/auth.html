@@ -148,7 +148,7 @@
                     document.getElementById('otpGroup').style.display = 'block';
                     document.getElementById('loginOtp').required = true;
                     document.getElementById('pageTitle').textContent = 'Two-Factor Auth';
-                    document.getElementById('pageSubtitle').textContent = 'Enter the code sent to your email';
+                    document.getElementById('pageSubtitle').textContent = data.message || 'Enter the code sent to your email';
                     btn.innerHTML = 'Verify Code';
                     loginState = 'step2';
                     

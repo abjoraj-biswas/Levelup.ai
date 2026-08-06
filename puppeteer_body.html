@@ -1,0 +1,1356 @@
+
+    <!-- Login Screen -->
+    <div id="app-login" class="login-body">
+        <div class="login-container">
+
+            <!-- Left Side: Branding -->
+            <div class="login-left">
+                <div class="login-logo">
+                    <span class="logo-dot"></span>levelup<span class="logo-ext">.ai</span>
+                </div>
+
+                <div class="login-graphic">
+                    <div class="circle circle-6"></div>
+                    <div class="circle circle-5"></div>
+                    <div class="circle circle-4"></div>
+                    <div class="circle circle-3"></div>
+                    <div class="circle circle-2"></div>
+                    <div class="circle circle-1">
+                        <span class="circle-badge">01</span>
+                        <span class="circle-text">YOUR<br>EDGE</span>
+                    </div>
+                </div>
+
+                <div class="login-branding">
+                    <p class="branding-eyebrow">CAREER INTELLIGENCE, REIMAGINED</p>
+                    <h1 class="branding-title">Built around<br><span class="branding-highlight">your potential.</span>
+                    </h1>
+                    <p class="branding-desc">From first semester to first offer — a roadmap that<br>moves at your
+                        pace.</p>
+                </div>
+
+                <div class="login-footer-left">
+                    <span>© 2026 LEVELUP.AI</span>
+                    <span>STUDENT OS / 01</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="login-right">
+                <div class="login-form-wrapper">
+                    <p class="form-eyebrow">01 — WELCOME BACK</p>
+                    <h2 class="form-title">Continue your<br>momentum.</h2>
+                    <p class="form-subtitle">Sign in to return to your personalized career workspace.</p>
+
+                    <form class="login-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" value="aarya@levelup.ai" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-with-icon">
+                                <input type="password" id="password" value="********" required="">
+                                <i class="ph-fill ph-eye input-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" checked="">
+                                <span class="checkmark"></span>
+                                Keep me signed in
+                            </label>
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-login">
+                            Enter workspace <i class="ph-bold ph-arrow-up-right"></i>
+                        </button>
+                    </form>
+
+                    <p class="form-footer">
+                        New to LevelUp? <a href="#">Create your profile</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="app-dashboard" style="display: none;">
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <span class="logo-dot"></span>levelup<span class="logo-ext">.ai</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" data-target="overview">
+                        <i class="ph ph-house"></i>
+                        <span>Overview</span>
+                    </a>
+                    <a href="#" class="nav-item" data-target="roadmap">
+                        <i class="ph ph-map-trifold"></i>
+                        <span>My Roadmap</span>
+                    </a>
+                    <a href="#" class="nav-item" data-target="upskill">
+                        <i class="ph ph-sparkle"></i>
+                        <span>Upskill Hub</span>
+                    </a>
+                    <a href="#" class="nav-item" data-target="mentor">
+                        <i class="ph ph-robot"></i>
+                        <span>AI Mentor</span>
+                    </a>
+                    <a href="#" class="nav-item" data-target="interview">
+                        <i class="ph ph-target"></i>
+                        <span>Interview Lab</span>
+                    </a>
+                    <a href="#" class="nav-item" data-target="profile">
+                        <i class="ph ph-user"></i>
+                        <span>Live Profile</span>
+                    </a>
+                    <a href="#" class="nav-item" data-target="bounties">
+                        <i class="ph ph-briefcase"></i>
+                        <span>Skill Bounties</span>
+                    </a>
+                    <a href="#" class="nav-item" data-target="matches">
+                        <i class="ph ph-buildings"></i>
+                        <span>Corporate Matches</span>
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="challenge-card">
+                        <h4>Ready for a challenge?</h4>
+                        <p>Your mock interview is waiting.</p>
+                        <button class="btn btn-primary-alt">Start practice →</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Topbar -->
+                <header class="topbar">
+                    <div class="page-title">
+                        <h2 id="current-page-title">Student dashboard</h2>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 24px;">
+                        <div class="notification-container" style="position: relative; cursor: pointer;">
+                            <i class="ph ph-bell" id="notification-btn" style="font-size: 24px; color: var(--text-secondary);"></i>
+                            <span class="notification-badge" style="position: absolute; top: -4px; right: -4px; background: #EF4444; color: white; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 10px;">2</span>
+                            <div class="notification-dropdown" id="notification-dropdown" style="display: none; position: absolute; top: 40px; right: -10px; background: var(--surface, #fff); border: 1px solid var(--border, #E2E8F0); border-radius: 12px; width: 300px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 100;">
+                                <div style="padding: 16px; border-bottom: 1px solid var(--border, #E2E8F0);">
+                                    <h4 style="margin: 0; font-size: 16px; color: var(--text-primary, #0F172A);">
+                                        Notifications</h4>
+                                </div>
+                                <div style="max-height: 300px; overflow-y: auto;">
+                                    <div style="padding: 12px 16px; border-bottom: 1px solid var(--border, #E2E8F0); display: flex; flex-direction: column; gap: 4px; background: rgba(59, 130, 246, 0.05);">
+                                        <span style="font-size: 14px; font-weight: 600; color: var(--text-primary, #0F172A);">Mock
+                                            Interview Available</span>
+                                        <span style="font-size: 12px; color: var(--text-secondary, #475569);">Your AI
+                                            mock interview session is ready to start.</span>
+                                    </div>
+                                    <div style="padding: 12px 16px; display: flex; flex-direction: column; gap: 4px;">
+                                        <span style="font-size: 14px; font-weight: 600; color: var(--text-primary, #0F172A);">Bug
+                                            Hunting Event</span>
+                                        <span style="font-size: 12px; color: var(--text-secondary, #475569);">A new bug
+                                            hunting bounty has been posted.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-dropdown-container">
+                            <div class="user-profile" id="user-profile-btn">
+                                <div class="avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Aarya&amp;background=random&amp;color=fff" alt="Avatar" id="nav-avatar-img">
+                                </div>
+                                <span class="username" id="nav-username">Aarya</span>
+                                <i class="ph ph-caret-down"></i>
+                            </div>
+                            <div class="user-dropdown-menu" id="user-dropdown-menu">
+                                <a href="#" class="dropdown-item" data-target="myprofile"><i class="ph ph-user"></i> My
+                                    Profile</a>
+                                <a href="#" class="dropdown-item"><i class="ph ph-gear"></i> Settings</a>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item theme-toggle" id="theme-toggle">
+                                    <i class="ph ph-moon"></i> <span>Toggle Dark Mode</span>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item text-danger" id="nav-logout"><i class="ph ph-sign-out"></i>
+                                    Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Dynamic Views Container -->
+                <div id="views-container" class="views-container">
+                    <!-- Overview View -->
+                    <div class="view active" id="view-overview">
+                        <div class="dashboard-grid">
+                            <!-- Left Column -->
+                            <div class="dash-col-left">
+                                <div class="banner-card">
+                                    <span class="eyebrow">YOUR CAREER, IN MOTION</span>
+                                    <h1>Your next level starts today.</h1>
+                                    <p>You're building real momentum. Finish this week's goals to unlock your next
+                                        roadmap
+                                        milestone.</p>
+                                    <button class="btn btn-banner">Continue roadmap →</button>
+                                </div>
+
+                                <div class="roadmap-preview-card">
+                                    <div class="card-header">
+                                        <div>
+                                            <h3>Your 4-year roadmap</h3>
+                                            <p>Year 2 · AI / ML track · 46% complete</p>
+                                        </div>
+                                        <a href="#" class="view-link" onclick="document.querySelector('[data-target=\'roadmap\']').click()">View
+                                            full
+                                            roadmap →</a>
+                                    </div>
+                                    <div class="roadmap-timeline">
+                                        <div class="timeline-card completed">
+                                            <h4>Year 1</h4>
+                                            <p>Explore &amp; build foundations</p>
+                                            <span class="status"><i class="ph ph-check"></i> Completed</span>
+                                        </div>
+                                        <div class="timeline-card active">
+                                            <div class="badge">NOW</div>
+                                            <h4>Year 2</h4>
+                                            <p>Ship projects &amp; specialize</p>
+                                            <span class="status highlight">4 goals active</span>
+                                        </div>
+                                        <div class="timeline-card locked">
+                                            <h4>Year 3</h4>
+                                            <p>Internships &amp; industry depth</p>
+                                        </div>
+                                        <div class="timeline-card locked">
+                                            <h4>Year 4</h4>
+                                            <p>Launch your career</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="dash-col-right">
+                                <div class="streak-card">
+                                    <div class="streak-header">
+                                        <h3>Growth streak <i class="ph ph-fire"></i></h3>
+                                    </div>
+                                    <div class="streak-days">12 <span>days</span></div>
+                                    <p class="streak-meta">You're in the top 18% of learners.</p>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 75%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mentor-card">
+                                    <i class="ph-fill ph-sparkle top-right-icon"></i>
+                                    <span class="eyebrow">LEVELUP AI MENTOR</span>
+                                    <h3>What will you build this week?</h3>
+                                    <p>Ask for a project brief, clear a coding doubt, or prepare for a hackathon.</p>
+                                    <div class="mentor-actions">
+                                        <button class="btn-pill">Suggest a project</button>
+                                        <button class="btn-pill">Explain a concept</button>
+                                        <button class="btn-pill">Hackathon idea</button>
+                                    </div>
+                                </div>
+
+                                <div class="stats-row">
+                                    <div class="stat-card">
+                                        <span class="stat-title">Recruiter match</span>
+                                        <div class="stat-value">86%</div>
+                                        <p class="stat-change positive">↑ 8% this month</p>
+                                        <div class="progress-bar-container small">
+                                            <div class="progress-bar purple" style="width: 86%"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other Views -->
+                    <div class="view" id="view-roadmap">
+                        <div class="roadmap-view">
+                            <div class="view-header">
+                                <h2>Your 4-Year Curriculum</h2>
+                                <p>AI / ML Engineering Track</p>
+                            </div>
+
+                            <div class="roadmap-path">
+                                <div class="roadmap-stage completed">
+                                    <div class="stage-marker"><i class="ph ph-check"></i></div>
+                                    <div class="stage-content">
+                                        <span class="eyebrow">YEAR 1 · COMPLETED</span>
+                                        <h3>Foundations &amp; Logic</h3>
+                                        <div class="stage-details">
+                                            <div class="course-pill">Data Structures</div>
+                                            <div class="course-pill">Python Basics</div>
+                                            <div class="course-pill">Linear Algebra</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="roadmap-stage active">
+                                    <div class="stage-marker current"></div>
+                                    <div class="stage-content">
+                                        <span class="eyebrow">YEAR 2 · IN PROGRESS</span>
+                                        <h3>Core Machine Learning</h3>
+                                        <div class="stage-details grid">
+                                            <div class="course-card active">
+                                                <h4>Supervised Learning</h4>
+                                                <div class="progress-bar-container">
+                                                    <div class="progress-bar purple" style="width: 60%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="course-card">
+                                                <h4>Neural Networks</h4>
+                                                <span class="status-badge">Next Module</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="roadmap-stage locked">
+                                    <div class="stage-marker"><i class="ph ph-lock-key"></i></div>
+                                    <div class="stage-content">
+                                        <span class="eyebrow">YEAR 3 · LOCKED</span>
+                                        <h3>Advanced AI &amp; NLP</h3>
+                                        <p class="lock-msg">Complete Year 2 goals to unlock this stage.</p>
+                                    </div>
+                                </div>
+
+                                <div class="roadmap-stage locked">
+                                    <div class="stage-marker"><i class="ph ph-lock-key"></i></div>
+                                    <div class="stage-content">
+                                        <span class="eyebrow">YEAR 4 · LOCKED</span>
+                                        <h3>Industry Readiness</h3>
+                                        <p class="lock-msg">Complete Year 3 goals to unlock this stage.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="view" id="view-upskill">
+                        <div class="upskill-view">
+                            <div class="view-header">
+                                <h2>Upskill Hub</h2>
+                                <p>Earn verified certificates to automatically update your Live Profile.</p>
+                            </div>
+
+                            <div class="upskill-grid">
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #FF6B6B, #FF8E53);">
+                                        <i class="ph-fill ph-code-block" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Programming Language</h3>
+                                        <p>8 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('Programming Language')">View Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #4A3AFF, #8A64FF);">
+                                        <i class="ph-fill ph-tree-structure" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Data Structure &amp; Algorithm</h3>
+                                        <p>7 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('Data Structure &amp; Algorithm')">View Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #00C6FF, #0072FF);">
+                                        <i class="ph-fill ph-browser" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Frontend Development</h3>
+                                        <p>9 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('Frontend Development')">View Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #11998E, #38EF7D);">
+                                        <i class="ph-fill ph-database" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Backend Development</h3>
+                                        <p>11 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('Backend Development')">View Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #8E2DE2, #4A00E0);">
+                                        <i class="ph-fill ph-layers" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Full Stack Development</h3>
+                                        <p>6 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('Full Stack Development')">View Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #FC466B, #3F5EFB);">
+                                        <i class="ph-fill ph-brain" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>AI</h3>
+                                        <p>5 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('AI')">View
+                                            Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #F3904F, #3B4371);">
+                                        <i class="ph-fill ph-graph" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Machine Learning</h3>
+                                        <p>8 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('Machine Learning')">View Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #141E30, #243B55);">
+                                        <i class="ph-fill ph-shield-check" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Cyber Security</h3>
+                                        <p>12 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('Cyber Security')">View Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #4CB8C4, #3CD3AD);">
+                                        <i class="ph-fill ph-cloud" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Cloud Computing</h3>
+                                        <p>6 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('Cloud Computing')">View Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #FF416C, #FF4B2B);">
+                                        <i class="ph-fill ph-infinity" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>DevOps</h3>
+                                        <p>8 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('DevOps')">View
+                                            Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #00B4DB, #0083B0);">
+                                        <i class="ph-fill ph-chart-bar" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Data Science</h3>
+                                        <p>9 skills to master</p>
+                                        <button class="btn btn-primary-alt" onclick="openPathModal('Data Science')">View
+                                            Skills</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #7F00FF, #E100FF);">
+                                        <i class="ph-fill ph-bezier-curve" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>UI/UX Design</h3>
+                                        <p>6 skills to master</p>
+                                        <button class="btn btn-primary-alt">Start Path</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #1D976C, #93F9B9);">
+                                        <i class="ph-fill ph-brackets-curly" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Software Engineering</h3>
+                                        <p>8 skills to master</p>
+                                        <button class="btn btn-primary-alt">Start Path</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-item">
+                                    <div class="course-img" style="background: linear-gradient(135deg, #F7971E, #FFD200);">
+                                        <i class="ph-fill ph-student" style="color: white; font-size: 32px;"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>Placement Preparation</h3>
+                                        <p>9 skills to master</p>
+                                        <button class="btn btn-primary-alt">Start Path</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="view" id="view-mentor">
+                        <div class="mentor-view">
+                            <div class="mentor-chat">
+                                <div class="chat-header">
+                                    <div><i class="ph-fill ph-sparkle"></i> Gemma AI Edge Mentor</div>
+                                    <span class="offline-badge"><i class="ph ph-wifi-slash"></i> Offline Ready</span>
+                                </div>
+                                <div class="chat-messages"></div>
+                                <div class="chat-input-area">
+                                    <input type="text" placeholder="Ask Gemma for help, project ideas, or code reviews...">
+                                    <button class="btn btn-send"><i class="ph ph-paper-plane-right"></i></button>
+                                </div>
+                            </div>
+                            <div class="mentor-workspace code-chat" style="display: flex; flex-direction: column; padding: 0;">
+                                <div class="chat-header" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding: 16px 20px;">
+                                    <div><i class="ph-fill ph-code"></i> Lecture Code Bot</div>
+                                    <span class="offline-badge"><i class="ph ph-lightning"></i> Fast Code</span>
+                                </div>
+                                <div class="code-chat-messages" style="flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+                                    <div class="message ai" style="display: flex; gap: 12px;">
+                                        <div class="msg-avatar" style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                            <i class="ph-fill ph-robot"></i>
+                                        </div>
+                                        <div class="msg-bubble" style="background: rgba(255,255,255,0.05); padding: 12px 16px; border-radius: 12px; border-top-left-radius: 0; font-size: 14px; color: var(--text-secondary);">
+                                            Need code from a lecture? Ask me and I'll generate the raw code for you!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-input-area" style="padding: 16px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; gap: 12px;">
+                                    <input type="text" class="code-chat-input" placeholder="E.g. Code for Python decorators..." style="flex: 1; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px 16px; color: white;">
+                                    <button class="btn btn-primary btn-code-send" style="padding: 0 20px;"><i class="ph ph-paper-plane-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="view" id="view-interview">
+                        <div class="interview-view">
+                            <div class="view-header">
+                                <h2>Interview Lab &amp; Stream Assessment</h2>
+                                <p>Prepare for behavioral rounds and discover your ideal engineering track.</p>
+                            </div>
+
+                            <div class="interview-grid">
+                                <div class="assessment-card">
+                                    <div class="card-icon" style="background: #e0e7ff; color: #4338ca;">
+                                        <i class="ph-fill ph-game-controller"></i>
+                                    </div>
+                                    <h3>Start assesment</h3>
+                                    <p>For 1st year students: Discover your cognitive traits and logical reasoning to
+                                        find
+                                        the perfect engineering stream.</p>
+                                    <button id="btn-open-assessments" class="btn btn-primary-alt" style="margin-top: 16px;">Start
+                                        Assessment</button>
+                                </div>
+
+                                <div class="assessment-card">
+                                    <div class="card-icon" style="background: #fee2e2; color: #b91c1c;">
+                                        <i class="ph-fill ph-users"></i>
+                                    </div>
+                                    <h3>Strat mock interview</h3>
+                                    <p>Gemma-powered situational tests to score your analytical thinking, communication,
+                                        and
+                                        pressure handling.</p>
+                                    <button id="btn-open-mock-interviews" class="btn btn-primary-alt" style="margin-top: 16px;">Start Mock
+                                        Interview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="view" id="view-profile">
+                        <div class="profile-view">
+                            <div class="view-header">
+                                <h2>Live Profile (Anti-Resume)</h2>
+                                <p>Your verified 100% fake-proof data for corporate matching.</p>
+                            </div>
+
+                            <div class="profile-layout">
+                                <div class="profile-main">
+                                    <div class="profile-card">
+                                        <h3>Technical &amp; Psychometric Radar</h3>
+                                        <div class="skill-bars-container">
+                                            <div class="skill-bar-wrapper">
+                                                <div class="skill-info"><span>Coding</span><span>92%</span></div>
+                                                <div class="skill-bar-bg">
+                                                    <div class="skill-bar-fill" style="width: 0%;" data-target-width="92%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-bar-wrapper">
+                                                <div class="skill-info"><span>Communication</span><span>85%</span></div>
+                                                <div class="skill-bar-bg">
+                                                    <div class="skill-bar-fill" style="width: 0%;" data-target-width="85%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-bar-wrapper">
+                                                <div class="skill-info"><span>System Design</span><span>78%</span></div>
+                                                <div class="skill-bar-bg">
+                                                    <div class="skill-bar-fill" style="width: 0%;" data-target-width="78%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-bar-wrapper">
+                                                <div class="skill-info"><span>Pressure Handling</span><span>88%</span>
+                                                </div>
+                                                <div class="skill-bar-bg">
+                                                    <div class="skill-bar-fill" style="width: 0%;" data-target-width="88%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="skill-bar-wrapper">
+                                                <div class="skill-info"><span>Analytical Thinking</span><span>95%</span>
+                                                </div>
+                                                <div class="skill-bar-bg">
+                                                    <div class="skill-bar-fill" style="width: 0%;" data-target-width="95%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile-sidebar">
+                                    <div class="tracker-card">
+                                        <h3><i class="ph-fill ph-clock-counter-clockwise" style="color: #6B4CE6;"></i>
+                                            Recent Attempts</h3>
+                                        <p class="tracker-desc">View your recently attempted assessments and mock
+                                            interviews.</p>
+                                        <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">Recent
+                                            Attempts</button>
+                                    </div>
+
+
+
+                                    <div class="tracker-card">
+                                        <h3><i class="ph-fill ph-trophy" style="color: #F59E0B;"></i> Skill Bounty
+                                            Points</h3>
+                                        <p class="tracker-desc">Points earned by completing verified tasks and finding
+                                            bugs.</p>
+
+                                        <div class="points-display">
+                                            <div class="points-value"><span id="live-bounty-points">0</span>
+                                                <small>XP</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="certificate-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" id="cert-progress-fill" style="width: 0%;">
+                                                </div>
+                                            </div>
+                                            <div class="progress-labels">
+                                                <span>0</span>
+                                                <span>5000 to Unlock Certificate</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="certificate-unlock" id="certificate-unlock" style="display: none;">
+                                            <i class="ph-fill ph-certificate"></i> Verified Contributor Certificate
+                                            Unlocked!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Bounties View -->
+                    <div class="view" id="view-bounties">
+                        <div class="bounties-header">
+                            <div class="bounties-title-section">
+                                <h3>Skill Bounties</h3>
+                                <p>Complete real-world micro-tasks from recruiters and peers to earn XP and verified
+                                    badges.</p>
+                            </div>
+                        </div>
+
+                        <div class="bounties-grid" id="bounties-container"></div>
+                    </div>
+
+                    <!-- Corporate Matches View -->
+                    <div class="view" id="view-matches">
+                        <div class="bounties-header">
+                            <div class="bounties-title-section">
+                                <h3>Corporate Matches</h3>
+                                <p>Discover which companies suit your 100% verified Anti-Resume profile.</p>
+                            </div>
+                        </div>
+
+                        <div class="match-highlight-card" id="top-match-card">
+                            <div class="highlight-header">
+                                <i class="ph-fill ph-star" style="color: #F59E0B; font-size: 24px;"></i>
+                                <h4>Top Recommendation Engine</h4>
+                            </div>
+                            <div class="highlight-body">
+                                <div class="highlight-logo" style="background:#fff; overflow: hidden; padding: 4px;">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/004/201/564/small/meta-social-network-emblem-blue-stylish-letter-m-or-mobius-band-vector.jpg" alt="Meta" style="width: 100%; height: 100%; object-fit: contain;">
+                                </div>
+                                <div class="highlight-info">
+                                    <h5>Meta</h5>
+                                    <span class="highlight-role">Product Engineer</span>
+                                    <p class="highlight-reason">Based on your extremely high <strong style="color: #6B4CE6;">Analytical Thinking (95%)</strong> and <strong style="color: #6B4CE6;">Coding (92%)</strong>, Meta's fast-paced product
+                                        engineering environment is your perfect match.</p>
+                                </div>
+                                <div class="highlight-score">
+                                    <strong>98%</strong>
+                                    <span>Match</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">Apply with
+                                Anti-Resume</button>
+                        </div>
+
+                        <h4 style="margin-top: 40px; margin-bottom: 20px; color: #333; font-size: 18px;">All Company
+                            Matches</h4>
+                        <div class="bounties-grid">
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Google</h4>
+                                        <span style="font-size: 14px;">SWE Role - 92% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Google looks for strong
+                                    System Design and Coding. Your recent Bounties have boosted your score.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3r5Pp8196JW12Uxw4kiUZbcUEFFmoaJgQgNesHKkUCmbF9BlWturF2c0&amp;s=10" alt="Uber" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Uber</h4>
+                                        <span style="font-size: 14px;">Backend Engineer - 88% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Uber values heavy backend
+                                    optimization. Complete more MongoDB bounties to raise this match.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://www.hatchwise.com/wp-content/uploads/2022/05/amazon-logo-1024x683.png-1.webp" alt="Amazon" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Amazon</h4>
+                                        <span style="font-size: 14px;">Cloud Architect - 85% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Your AWS certifications
+                                    are noted, but System Design needs a slight bump.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/15844974/netflixlogo.0.0.1466448626.png?quality=90&amp;strip=all&amp;crop=1.2535702951444%2C0%2C97.492859409711%2C100&amp;w=2400" alt="Netflix" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Netflix</h4>
+                                        <span style="font-size: 14px;">Core Systems - 81% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Netflix demands extreme
+                                    scaling expertise. Try completing high-concurrency bounties.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+
+                            <!-- New Matches -->
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH2VlK02y_jaP1qYl7jJavOpZEBVHEXEAPK6uN3OI6dG2ldkDKOZUx9K-h&amp;s=10" alt="Anthropic" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Anthropic</h4>
+                                        <span style="font-size: 14px;">AI Safety Engineer - 87% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Strong LLM evaluation and
+                                    alignment skills shown in recent hackathons make you a standout candidate.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/960px-OpenAI_Logo.svg.png" alt="OpenAI" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">OpenAI</h4>
+                                        <span style="font-size: 14px;">ML Researcher - 89% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">High PyTorch competency
+                                    and strong reasoning scores map well to core model development pipelines.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/24760594/Adobe_wordmark.jpg?quality=90&amp;strip=all&amp;crop=7.8125,0,84.375,100" alt="Adobe" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Adobe</h4>
+                                        <span style="font-size: 14px;">Creative Cloud Dev - 84% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Your front-end aesthetic
+                                    combined with C++ systems programming makes you an ideal candidate.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Tata_Consultancy_Services_old_logo.svg/1280px-Tata_Consultancy_Services_old_logo.svg.png" alt="TCS" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Tata Consultancy Services</h4>
+                                        <span style="font-size: 14px;">Software Engineer - 95% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Consistent delivery in
+                                    enterprise Java and excellent logical problem-solving track record.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://images.ctfassets.net/o7xu9whrs0u9/7Clpp7emR2AOm9pea17ydJ/3f46624331ad155a529953e0f3a0e0fb/wipro-logo.png" alt="Wipro" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Wipro</h4>
+                                        <span style="font-size: 14px;">Full Stack Developer - 94% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Extensive exposure to MERN
+                                    stack workflows perfectly aligns with Digital transformation projects.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/DeloitteNewLogo.jpg" alt="Deloitte" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Deloitte</h4>
+                                        <span style="font-size: 14px;">Tech Consultant - 91% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Your psychometric profile
+                                    shows exceptional communication and client-handling potential.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3mBzAZKjn8ZUZuvAKNfIegaxBPolcFGFxCtS2JC0LqtgH331Wv4mksW8&amp;s=10" alt="Accenture" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Accenture</h4>
+                                        <span style="font-size: 14px;">Cloud App Engineer - 93% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Strong AWS and Azure
+                                    deployment skills coupled with high adaptability and resilience scores.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+
+                            <div class="bounty-card">
+                                <div class="match-item" style="margin-bottom: 12px; padding: 0; background: transparent; border: none;">
+                                    <img src="https://ptc-p-001.sitecorecontenthub.cloud/api/public/content/efdf124795ed4a54b351be4d80861b1b?v=021d1337" alt="Capgemini" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: white; padding: 4px;">
+                                    <div class="match-info" style="margin-left: 12px;">
+                                        <h4 style="font-size: 18px;">Capgemini</h4>
+                                        <span style="font-size: 14px;">Data Engineer - 90% Match</span>
+                                    </div>
+                                </div>
+                                <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Excellent SQL optimization
+                                    abilities and data pipeline architecture projects mapped.</p>
+                                <button class="btn btn-primary-alt">View Details</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- My Profile (Manage) View -->
+                    <div class="view" id="view-myprofile">
+                        <div class="bounties-header">
+                            <div class="bounties-title-section">
+                                <h3>Manage My Profile</h3>
+                                <p>Update your photo, name, and bio for your dashboard.</p>
+                            </div>
+                        </div>
+                        <!-- Personal Details Card -->
+                        <div class="tracker-card" style="max-width: 800px; margin-bottom: 20px;">
+                            <h3 style="margin-bottom: 20px; font-size: 18px; color: #0F172A;">Personal Details</h3>
+
+                            <div style="display: flex; gap: 24px; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap;">
+                                <div class="form-group" style="flex: 0 0 auto;">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Profile
+                                        Photo</label>
+                                    <div style="display: flex; align-items: center; gap: 16px;">
+                                        <img src="https://ui-avatars.com/api/?name=Aarya&amp;background=random&amp;color=fff" style="width: 64px; height: 64px; border-radius: 50%;" id="manage-avatar-preview">
+                                        <button class="btn btn-secondary" id="btn-upload-photo" style="padding: 8px 16px;">Upload</button>
+                                        <input type="file" id="manage-photo-input" accept="image/*" style="display: none;">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="flex: 1; min-width: 250px;">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Full
+                                        Name</label>
+                                    <input type="text" id="manage-name" class="bounty-input" value="Aarya" style="width: 100%;">
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Date
+                                        of Birth</label>
+                                    <input type="date" id="manage-dob" class="bounty-input" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Gender</label>
+                                    <select id="manage-gender" class="bounty-input" style="width: 100%; background: #fff;">
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Current
+                                        City</label>
+                                    <input type="text" id="manage-city" class="bounty-input" placeholder="e.g. Bangalore" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">State</label>
+                                    <input type="text" id="manage-state" class="bounty-input" placeholder="e.g. Karnataka" style="width: 100%;">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Bio</label>
+                                <textarea id="manage-bio" class="bounty-input" rows="3" style="width: 100%;">Aspiring AI Engineer passionate about scalable systems.</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Education Details Card -->
+                        <div class="tracker-card" style="max-width: 800px; margin-bottom: 20px;">
+                            <h3 style="margin-bottom: 20px; font-size: 18px; color: #0F172A;">Education Details</h3>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">University
+                                        Name</label>
+                                    <input type="text" id="manage-university" class="bounty-input" placeholder="e.g. IIT" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Degree</label>
+                                    <input type="text" id="manage-degree" class="bounty-input" placeholder="e.g. B.Tech" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Branch
+                                        / Department</label>
+                                    <input type="text" id="manage-branch" class="bounty-input" placeholder="e.g. Computer Science" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Year
+                                        of Study</label>
+                                    <select id="manage-year" class="bounty-input" style="width: 100%; background: #fff;">
+                                        <option value="">Select Year</option>
+                                        <option value="1">1st Year</option>
+                                        <option value="2">2nd Year</option>
+                                        <option value="3">3rd Year</option>
+                                        <option value="4">4th Year</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Semester</label>
+                                    <input type="text" id="manage-semester" class="bounty-input" placeholder="e.g. 6th" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Roll
+                                        Number</label>
+                                    <input type="text" id="manage-rollno" class="bounty-input" placeholder="Your Roll Number" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Student
+                                        ID (Optional)</label>
+                                    <input type="text" id="manage-studentid" class="bounty-input" placeholder="Your Student ID" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">CGPA
+                                        (Optional)</label>
+                                    <input type="number" step="0.01" id="manage-cgpa" class="bounty-input" placeholder="e.g. 8.5" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Career Information Card -->
+                        <div class="tracker-card" style="max-width: 800px; margin-bottom: 20px;">
+                            <h3 style="margin-bottom: 20px; font-size: 18px; color: #0F172A;">Career Information</h3>
+
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Career
+                                    Goal</label>
+                                <textarea id="manage-careergoal" class="bounty-input" rows="2" style="width: 100%;" placeholder="e.g. I want to build scalable AI systems for a leading tech company."></textarea>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Preferred
+                                        Domain</label>
+                                    <select id="manage-domain" class="bounty-input" style="width: 100%; background: #fff;">
+                                        <option value="">Select Domain</option>
+                                        <option value="AI/ML">AI / ML</option>
+                                        <option value="Web Development">Web Development</option>
+                                        <option value="Cyber Security">Cyber Security</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="App Development">App Development</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Preferred
+                                        Internship Type</label>
+                                    <select id="manage-internship" class="bounty-input" style="width: 100%; background: #fff;">
+                                        <option value="">Select Type</option>
+                                        <option value="Remote">Remote</option>
+                                        <option value="On-site">On-site</option>
+                                        <option value="Hybrid">Hybrid</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);">Interested
+                                    Skills (Comma separated)</label>
+                                <input type="text" id="manage-interestedskills" class="bounty-input" placeholder="e.g. Python, React, PyTorch, Docker" style="width: 100%;">
+                            </div>
+                        </div>
+
+                        <!-- Social Profiles & Documents Card -->
+                        <div class="tracker-card" style="max-width: 800px; margin-bottom: 20px;">
+                            <h3 style="margin-bottom: 20px; font-size: 18px; color: #0F172A;">Social Profiles &amp;
+                                Documents</h3>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i class="fab fa-linkedin" style="color: #0A66C2;"></i> LinkedIn Profile
+                                        URL</label>
+                                    <input type="url" id="manage-linkedin" class="bounty-input" placeholder="https://linkedin.com/in/username" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i class="fab fa-github" style="color: #333;"></i> GitHub Profile URL</label>
+                                    <input type="url" id="manage-github" class="bounty-input" placeholder="https://github.com/username" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i class="ph-fill ph-globe" style="color: #4CAF50;"></i> Portfolio
+                                        Website</label>
+                                    <input type="url" id="manage-portfolio" class="bounty-input" placeholder="https://yourwebsite.com" style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary, #475569);"><i class="ph-fill ph-file-pdf" style="color: #ef4444;"></i> Resume Upload
+                                        (PDF)</label>
+                                    <div style="display: flex; gap: 10px; align-items: center;">
+                                        <input type="file" id="manage-resume" accept=".pdf" style="width: 100%; padding: 8px; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 14px; background: #fff;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tracker-card" style="max-width: 600px; margin-top: 20px;">
+                            <h3><i class="ph-fill ph-heartbeat" style="color: #ef4444;"></i> Medical &amp;
+                                Physical Tracker</h3>
+                            <p class="tracker-desc">Verified criteria for Defense, Aviation, Merchant Navy, and Core
+                                Engineering.</p>
+
+                            <div class="tracker-item">
+                                <span class="label">Vision</span>
+                                <span class="value valid">6/6 (Uncorrected) <i class="ph-fill ph-check-circle"></i></span>
+                            </div>
+                            <div class="tracker-item">
+                                <span class="label">Height</span>
+                                <div class="height-input-group">
+                                    <input type="number" id="user-height" value="175" min="100" max="250" class="inline-input"> <span>cm</span>
+                                </div>
+                            </div>
+                            <div class="tracker-item">
+                                <span class="label">Fitness</span>
+                                <span class="value valid">Class 1 Medical <i class="ph-fill ph-check-circle"></i></span>
+                            </div>
+                            <button class="btn btn-primary" style="margin-top: 16px;">Save Medical Profile</button>
+                        </div>
+
+                        <div style="max-width: 800px; display: flex; justify-content: flex-end; margin-bottom: 40px; margin-top: 20px;">
+                            <button class="btn btn-primary" id="btn-save-all-profile" style="padding: 12px 32px; font-size: 16px;">Save All Changes</button>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+            <!-- Bounty Submission Modal -->
+            <div id="bounty-modal" class="modal-overlay" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Submit Bounty</h4>
+                        <button id="close-modal" class="btn-icon"><i class="ph ph-x"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modal-subtitle" id="modal-bounty-title"></p>
+                        <p style="margin-bottom: 12px; font-size: 14px;">Enter the link to your completed code (e.g.
+                            GitHub PR, Repo):</p>
+                        <input type="url" id="bounty-url" class="bounty-input" placeholder="https://github.com/..." required="">
+                        <div id="bounty-ai-status" class="ai-status" style="display: none;">
+                            <i class="ph-bold ph-spinner ph-spin"></i> <span>Gemma AI is verifying your code...</span>
+                        </div>
+                        <div id="bounty-success-status" class="ai-success" style="display: none;">
+                            <i class="ph-fill ph-check-circle"></i> Verification Complete! Badge Awarded.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn-submit-bounty" class="btn btn-primary" style="width: 100%;">Submit for
+                            Verification</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Path Skills Modal -->
+            <div id="path-modal" class="modal-overlay" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="modal-path-title">Path Skills</h4>
+                        <button class="btn-icon" onclick="closePathModal()"><i class="ph ph-x"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="margin-bottom: 16px; font-size: 14px; color: var(--text-secondary);">Here are the
+                            skills you will master in this path:</p>
+                        <div id="modal-path-skills" class="course-skills-list">
+                            <!-- Skills dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="assessment-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h4>Available Assessments</h4>
+                <button id="close-assessment-modal" class="btn-icon"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div style="overflow-x: auto; max-height: 60vh; overflow-y: auto;">
+                    <table class="assessment-table">
+                        <thead>
+                            <tr>
+                                <th>Assessment</th>
+                                <th>Duration</th>
+                                <th>Difficulty</th>
+                                <th>Badge</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Python Programming Fundamentals</td>
+                                <td>20 min</td>
+                                <td><span class="badge diff-beginner">Beginner</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> Python Explorer
+                                </td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Data Structures &amp; Algorithms Assessment</td>
+                                <td>30 min</td>
+                                <td><span class="badge diff-intermediate">Intermediate</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> DSA Solver</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Object-Oriented Programming Challenge</td>
+                                <td>20 min</td>
+                                <td><span class="badge diff-beginner">Beginner</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> OOP Architect
+                                </td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>SQL &amp; Database Assessment</td>
+                                <td>20 min</td>
+                                <td><span class="badge diff-intermediate">Intermediate</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> Database Master
+                                </td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Machine Learning Fundamentals</td>
+                                <td>25 min</td>
+                                <td><span class="badge diff-intermediate">Intermediate</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> AIML Explorer
+                                </td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Deep Learning Basics</td>
+                                <td>30 min</td>
+                                <td><span class="badge diff-advanced">Advanced</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> Neural Network
+                                    Rookie</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Statistics &amp; Probability for AI</td>
+                                <td>20 min</td>
+                                <td><span class="badge diff-intermediate">Intermediate</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> Data Thinker
+                                </td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>AI Aptitude &amp; Logical Reasoning</td>
+                                <td>15 min</td>
+                                <td><span class="badge diff-beginner">Beginner</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> Logical Genius
+                                </td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Computer Science Core (OS, CN, DBMS)</td>
+                                <td>30 min</td>
+                                <td><span class="badge diff-advanced">Advanced</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> Core CS Pro</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>AI Ethics &amp; Responsible AI Assessment</td>
+                                <td>15 min</td>
+                                <td><span class="badge diff-beginner">Beginner</span></td>
+                                <td><i class="ph-fill ph-medal" style="color:var(--primary-color)"></i> Responsible AI
+                                </td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mock-interview-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h4>Available Mock Interviews</h4>
+                <button id="close-mock-interview-modal" class="btn-icon"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div style="overflow-x: auto; max-height: 60vh; overflow-y: auto;">
+                    <table class="assessment-table">
+                        <thead>
+                            <tr>
+                                <th>Interview</th>
+                                <th>Score</th>
+                                <th>Duration</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HR Behavioral Interview</td>
+                                <td>88%</td>
+                                <td>15min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td>Today</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Python Technical Interview</td>
+                                <td>92%</td>
+                                <td>25min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td>Yesterday</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Resume-Based AI Interview</td>
+                                <td>85%</td>
+                                <td>45min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td>2 days ago</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>DSA Coding Interview</td>
+                                <td>79%</td>
+                                <td>35min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td>3 days ago</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Machine Learning Engineer Interview</td>
+                                <td>90%</td>
+                                <td>35min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td>5 days ago</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Data Science Interview</td>
+                                <td>83%</td>
+                                <td>30min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td>1 week ago</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>SQL Technical Interview</td>
+                                <td>94%</td>
+                                <td>20min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td>1 week ago</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>AI Aptitude Interview</td>
+                                <td>87%</td>
+                                <td>30min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td>10 days ago</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>Startup Technical Interview</td>
+                                <td>81%</td>
+                                <td>25min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>MAANG Final Round Simulation</td>
+                                <td>76%</td>
+                                <td>45min</td>
+                                <td><span class="badge diff-intermediate">Inprogress</span></td>
+                                <td>Recently</td>
+                                <td><button class="btn btn-sm btn-primary-alt">Start</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js?v=2"></script>
+
+

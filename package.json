@@ -16,7 +16,8 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "multer": "^2.2.0",
-    "openai": "^6.49.0"
+    "openai": "^6.49.0",
+    "puppeteer": "^25.5.0"
   },
   "devDependencies": {
     "vite": "^8.1.5"

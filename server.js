@@ -66,109 +66,11 @@ app.get('/api/supabase-status', async (req, res) => {
 
 const loginOtps = new Map(); // Store simulated OTPs: email -> { otp, accessToken, expiresAt }
 
-app.post('/api/auth/signup', async (req, res) => {
-    const { email, password, name } = req.body;
-    if (!supabase) return res.status(500).json({ error: "Supabase not configured" });
-    
-    const { data, error } = await supabase.auth.signUp({ email, password, name });
-    if (error) return res.status(400).json({ error: error.message });
-    
-    res.json({ message: "Sign up successful, please verify email.", data });
-});
-
-app.post('/api/auth/verify-signup', async (req, res) => {
-    const { email, otp } = req.body;
-    if (!supabase) return res.status(500).json({ error: "Supabase not configured" });
-    
-    const { data, error } = await supabase.auth.verifyEmail({ email, otp });
-    if (error) return res.status(400).json({ error: error.message });
-    
-    res.json({ message: "Verification successful", data });
-});
-
-app.get('/api/auth/google', async (req, res) => {
-    if (!supabase) return res.status(500).json({ error: "Supabase not configured", details: initError });
-    
-    const baseUrl = req.protocol + '://' + req.get('host');
-    const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-            redirectTo: baseUrl + '/auth.html'
-        }
-    });
-    
-    if (error) {
-        return res.status(500).json({ error: error.message });
-    }
-    
-    if (data?.url) {
-        res.redirect(data.url);
-    } else {
-        res.status(500).json({ error: "Could not generate OAuth URL" });
-    }
-});
-
-app.post('/api/auth/login-step1', async (req, res) => {
-    const { email, password } = req.body;
-    if (!supabase) return res.status(500).json({ error: "Supabase not configured", details: initError });
-    
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) return res.status(400).json({ error: error.message });
-    
-    // Generate 6-digit OTP for 2FA
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    loginOtps.set(email, { 
-        otp, 
-        accessToken: data.accessToken || null,
-        expiresAt: Date.now() + 10 * 60 * 1000 // 10 minutes
-    });
-    
-    console.log(`\n==========================================`);
-    console.log(`🔒 Simulated 2FA Email to ${email}`);
-    console.log(`   Your verification code is: ${otp}`);
-    console.log(`==========================================\n`);
-    
-    res.json({ message: `2FA OTP sent to your email (Simulated Code: ${otp})`, requireOtp: true });
-});
-
-app.post('/api/auth/login-step2', async (req, res) => {
-    const { email, otp } = req.body;
-    const record = loginOtps.get(email);
-    
-    if (!record || record.expiresAt < Date.now()) {
-        return res.status(400).json({ error: "OTP expired or not found. Try logging in again." });
-    }
-    if (record.otp !== otp) {
-        return res.status(400).json({ error: "Invalid verification code." });
-    }
-    
-    // Valid OTP! Clear it and return session
-    loginOtps.delete(email);
-    res.json({ message: "Login successful", accessToken: record.accessToken });
-});
-
 // --- AUTHENTICATION MIDDLEWARE ---
 const requireAuth = async (req, res, next) => {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-        return res.status(401).json({ error: 'Unauthorized: No token provided' });
-    }
-    const token = authHeader.split(' ')[1];
-    
-    if (!supabase) return res.status(500).json({ error: "Supabase not configured" });
-    
-    try {
-        const { data: { user }, error } = await supabase.auth.getUser(token);
-        
-        if (error || !user) {
-            return res.status(401).json({ error: 'Unauthorized: Invalid token' });
-        }
-        req.user = user;
-        next();
-    } catch(err) {
-        console.error("Auth Error:", err);
-        return res.status(500).json({ error: 'Internal Server Error' });
-    }
+    // MOCK AUTH: Always assign a guest user
+    req.user = { id: '00000000-0000-0000-0000-000000000000', email: 'guest@levelup.ai' };
+    next();
 };
 
 // --- API ENDPOINTS ---

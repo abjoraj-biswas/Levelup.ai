@@ -162,26 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Backend API Integration ---
     async function fetchWithAuth(url, options = {}) {
-        const token = localStorage.getItem('supabase_token');
-        if (!token) {
-            window.location.href = 'auth.html';
-            throw new Error('No token found');
-        }
-
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
             ...(options.headers || {})
         };
-
         const baseUrl = window.location.port === '5501' || window.location.protocol === 'file:' ? 'http://localhost:5500' : '';
-        const response = await fetch(baseUrl + url, { ...options, headers });
-        if (response.status === 401) {
-            localStorage.removeItem('supabase_token');
-            window.location.href = 'auth.html';
-            throw new Error('Unauthorized');
-        }
-        return response;
+        return await fetch(baseUrl + url, { ...options, headers });
     }
     function updateBountyPointsUI(points) {
         const pointsEl = document.getElementById('live-bounty-points');
